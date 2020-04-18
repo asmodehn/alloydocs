@@ -1,0 +1,709 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Signatures &mdash; Alloy Documentation  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sets and Relations" href="sets-and-relations.html" />
+    <link rel="prev" title="Language" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Alloy Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Language</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Signatures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#relations">Relations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#multiplicity">Multiplicity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#field-expressions">Field Expressions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multirelations">Multirelations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#signature-multiplicity">Signature Multiplicity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subtypes">Subtypes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#in">in</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extends">extends</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subtypes-and-relationships">Subtypes and Relationships</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#child-relations">Child Relations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#enums">Enums</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sets-and-relations.html">Sets and Relations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions-and-constraints.html">Expressions and Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates-and-functions.html">Predicates and Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tooling/index.html">Tooling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../techniques/index.html">Techniques</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Alloy Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Language</a> &raquo;</li>
+        
+      <li>Signatures</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/language/signatures.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="signatures">
+<span id="id1"></span><h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
+<p>A <strong>signature</strong> expresses a new type in your spec. It can be anything
+you want. Here are some example signatures:</p>
+<ul class="simple">
+<li><p>Time</p></li>
+<li><p>State</p></li>
+<li><p>File</p></li>
+<li><p>Person</p></li>
+<li><p>Msg</p></li>
+<li><p>Joke</p></li>
+<li><p>Pair</p></li>
+</ul>
+<p>Each model will have some number of each signature, called <strong>atoms</strong>.
+Take the following spec:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">A</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<p>The following would be a valid model:</p>
+<img alt="../_images/sig-a.png" src="../_images/sig-a.png" />
+<p>Here we have two atoms <code class="docutils literal notranslate"><span class="pre">A$1</span></code> and <code class="docutils literal notranslate"><span class="pre">A$0</span></code>. Both count as instances of the <code class="docutils literal notranslate"><span class="pre">A</span></code> signature. See <a class="reference internal" href="../tooling/visualizer.html#visualizer"><span class="std std-ref">visualizer</span></a> for more on how to read the visualizations.</p>
+<p>Usually we care about the relationships between the parts of our
+systems. We don’t just care that there are people and accounts, we care
+which people have which accounts. We do this by adding <strong>relations</strong>
+inside of the signature body.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Person</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">Car</span> <span class="o">{}</span>
+
+<span class="kd">sig</span> <span class="n">Registration</span> <span class="o">{</span>
+  <span class="n">owner</span><span class="p">:</span> <span class="n">Person</span><span class="p">,</span>
+  <span class="n">car</span><span class="p">:</span> <span class="n">Car</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>This defines a new <code class="docutils literal notranslate"><span class="pre">Registration</span></code> type, where each Registration has an
+<code class="docutils literal notranslate"><span class="pre">owner</span></code>, which is a Person, and a <code class="docutils literal notranslate"><span class="pre">car</span></code>, which is a Car. The comma
+is required.</p>
+<img alt="../_images/sig-with-relations.png" src="../_images/sig-with-relations.png" />
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Extra commas are ignored. So you can write <code class="docutils literal notranslate"><span class="pre">Registration</span></code> instead like this:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Registration</span> <span class="o">{</span>
+   <span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="n">Person</span>
+   <span class="p">,</span> <span class="n">car</span><span class="p">:</span> <span class="n">Car</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="relations">
+<span id="signature-relations"></span><h2>Relations<a class="headerlink" href="#relations" title="Permalink to this headline">¶</a></h2>
+<p>The body of a signature is a list of <strong>relations</strong>, which show how the
+signatures are connected to each other.</p>
+<p>Relations are separated by a comma. The list can also start and end with
+a comma. Standard convention is to prefix every relation with a comma.</p>
+<p>Relations <em>can</em> refer to the same signature. This is valid:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Node</span> <span class="o">{</span>
+  <span class="p">,</span> <span class="n">edge</span><span class="p">:</span> <span class="k">set</span> <span class="n">Node</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<img alt="../_images/self-relation.png" src="../_images/self-relation.png" />
+<p>Alloy can generate models where a relation points to the same atom. For
+this reason we often want to add contraints to our model, such as
+<a class="reference internal" href="predicates-and-functions.html#facts"><span class="std std-ref">Facts</span></a> or <a class="reference internal" href="predicates-and-functions.html#predicates"><span class="std std-ref">Predicates</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each relation in the body of a signature actually represents a
+<a class="reference internal" href="sets-and-relations.html#relations"><span class="std std-ref">relation</span></a> type. If we have:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">A</span> <span class="o">{</span><span class="n">r</span><span class="p">:</span> <span class="k">one</span> <span class="n">B</span><span class="o">}</span>
+</pre></div>
+</div>
+<p>Then <code class="docutils literal notranslate"><span class="pre">r</span></code> is set of relations in <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span></code>. See <a class="reference internal" href="sets-and-relations.html#sets-and-relations"><span class="std std-ref">Sets and Relations</span></a> for more information.</p>
+</div>
+<p>Different signatures <em>may</em> have relationships with the same name as long as the relationship is not <a class="reference internal" href="#child-relations"><span class="std std-ref">ambiguous</span></a>.</p>
+<div class="section" id="multiplicity">
+<h3>Multiplicity<a class="headerlink" href="#multiplicity" title="Permalink to this headline">¶</a></h3>
+<p>Each relation has a <strong>multiplicity</strong>, which represents how many atoms it
+can include. If you do not include a multiplicity, it’s assumed to be
+<code class="docutils literal notranslate"><span class="pre">one</span></code>.</p>
+<div class="section" id="one">
+<span id="id2"></span><h4>one<a class="headerlink" href="#one" title="Permalink to this headline">¶</a></h4>
+<p>The default. <code class="docutils literal notranslate"><span class="pre">r:</span> <span class="pre">one</span> <span class="pre">A</span></code> states that there is <em>exactly one</em> A in the
+set.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Key</span> <span class="o">{}</span>
+
+<span class="kd">sig</span> <span class="n">Lock</span> <span class="o">{</span>
+  <span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="k">one</span> <span class="n">Key</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>This says that every lock has exactly one Key. This does <em>not</em> guarantee
+a 1-1 correspondence! Two locks can share the same key.</p>
+<img alt="../_images/one-key.png" src="../_images/one-key.png" />
+<p>If no multiplicity is listed, Alloy assumes to be <code class="docutils literal notranslate"><span class="pre">one</span></code>. So the above
+relation can also be written as <code class="docutils literal notranslate"><span class="pre">key:</span> <span class="pre">Key</span></code>.</p>
+</div>
+<div class="section" id="lone">
+<h4>lone<a class="headerlink" href="#lone" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">r:</span> <span class="pre">lone</span> <span class="pre">A</span></code> states that <em>either</em> there is one A in the set, <em>or</em> that
+the set is empty. You can also think of it as “optional”.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Directory</span> <span class="o">{</span>
+  <span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="k">lone</span> <span class="n">Directory</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>This says that every directory either has one parent, <em>or</em> it does not
+have a parent (it’s a root directory).</p>
+<img alt="../_images/lone-dir.png" src="../_images/lone-dir.png" />
+</div>
+<div class="section" id="set">
+<h4>set<a class="headerlink" href="#set" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">r:</span> <span class="pre">set</span> <span class="pre">A</span></code> states that there can be any number of A in the relation.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">User</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">Region</span> <span class="o">{</span>
+  <span class="n">servers</span><span class="p">:</span> <span class="k">set</span> <span class="n">User</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<img alt="../_images/set-user.png" src="../_images/set-user.png" />
+</div>
+<div class="section" id="some">
+<h4>some<a class="headerlink" href="#some" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">r:</span> <span class="pre">some</span> <span class="pre">A</span></code> states that there is <em>at least one</em> A in the relation.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Author</span> <span class="o">{}</span>
+
+<span class="kd">sig</span> <span class="n">Book</span> <span class="o">{</span>
+  <span class="n">by</span><span class="p">:</span> <span class="k">some</span> <span class="n">Author</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<img alt="../_images/some-author.png" src="../_images/some-author.png" />
+</div>
+<div class="section" id="disj">
+<h4>disj<a class="headerlink" href="#disj" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">disj</span></code> can be prepended to any multiplicity to gaurantee that it will be disjoint among all atoms. If we write</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Lock</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">Key</span> <span class="o">{</span>
+  <span class="n">lock</span><span class="p">:</span> <span class="k">disj</span> <span class="k">one</span> <span class="n">Lock</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Then every key will correspond to a <em>different</em> lock. If we instead write</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Lock</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">Key</span> <span class="o">{</span>
+  <span class="n">locks</span><span class="p">:</span> <span class="k">disj</span> <span class="k">some</span> <span class="n">Lock</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Then every key will correspond to one or more locks, but no two keys will share a lock.</p>
+</div>
+<div class="section" id="seq">
+<h4>seq<a class="headerlink" href="#seq" title="Permalink to this headline">¶</a></h4>
+<p>See <a class="reference external" href="http://alloytools.org/quickguide/seq.html">here</a> for more info.</p>
+</div>
+</div>
+<div class="section" id="field-expressions">
+<span id="id3"></span><h3>Field Expressions<a class="headerlink" href="#field-expressions" title="Permalink to this headline">¶</a></h3>
+<p>A field can be a simple <a class="reference internal" href="expressions-and-constraints.html#expressions"><span class="std std-ref">expression</span></a> over other signatures.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Resource</span> <span class="o">{</span>
+  <span class="n">permissions</span><span class="p">:</span> <span class="k">set</span> <span class="o">(</span><span class="n">User</span> <span class="o">+</span> <span class="n">Group</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p id="this">In addition to full signatures, the expression may contain <code class="docutils literal notranslate"><span class="pre">this</span></code>, which refers to the specific atom itself.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Node</span> <span class="o">{</span>
+  <span class="c1">-- no self loops</span>
+  <span class="p">,</span> <span class="n">edge</span><span class="p">:</span> <span class="k">set</span> <span class="n">Node</span> <span class="o">-</span> <span class="k">this</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>A <em class="dfn">dependent field</em> is one where the expression depends on the values of other fields in the atom. The dependencies must be fields defined either in the signature or its <a class="reference internal" href="#subtypes"><span class="std std-ref">supertype</span></a>.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Item</span> <span class="o">{}</span>
+
+<span class="kd">sig</span> <span class="n">Person</span> <span class="o">{</span>
+  <span class="p">,</span> <span class="n">favorite</span><span class="p">:</span> <span class="n">Item</span>
+  <span class="p">,</span> <span class="n">second</span><span class="p">:</span> <span class="n">Item</span> <span class="o">-</span> <span class="n">favorite</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="advanced section" id="multirelations">
+<span id="id4"></span><h3>Multirelations<a class="headerlink" href="#multirelations" title="Permalink to this headline">¶</a></h3>
+<p>Signatures can have multirelations as fields:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Door</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">Card</span> <span class="o">{}</span>
+
+<span class="kd">sig</span> <span class="n">Person</span> <span class="o">{</span>
+  <span class="n">access</span><span class="p">:</span> <span class="n">Card</span> <span class="o">-&gt;</span> <span class="n">Door</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>In this case <code class="docutils literal notranslate"><span class="pre">access</span></code> is a ternary relationship, where each element of
+<code class="docutils literal notranslate"><span class="pre">access</span></code> is a relation of form <code class="docutils literal notranslate"><span class="pre">Person</span> <span class="pre">-&gt;</span> <span class="pre">Card</span> <span class="pre">-&gt;</span> <span class="pre">Door</span></code>. Using the <a class="reference internal" href="sets-and-relations.html#id8"><span class="std std-ref">dot operator</span></a>, if <code class="docutils literal notranslate"><span class="pre">access</span> <span class="pre">=</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">C</span> <span class="pre">-&gt;</span> <span class="pre">D</span></code>, then <code class="docutils literal notranslate"><span class="pre">P.access</span> <span class="pre">=</span> <span class="pre">C</span> <span class="pre">-&gt;</span> <span class="pre">D</span></code> and <code class="docutils literal notranslate"><span class="pre">access.D</span> <span class="pre">=</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">C</span></code>.</p>
+<p>Multirelations have a special kind of multiplicity:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="p">:</span> <span class="n">A</span> <span class="n">m</span> <span class="o">-&gt;</span> <span class="n">n</span> <span class="n">B</span>
+</pre></div>
+</div>
+<p>This says that each member of <code class="docutils literal notranslate"><span class="pre">A</span></code> is mapped to <code class="docutils literal notranslate"><span class="pre">n</span></code> elements of B,
+and <code class="docutils literal notranslate"><span class="pre">m</span></code> elements of <code class="docutils literal notranslate"><span class="pre">A</span></code> map to each element of B. If not specified,
+the multiplicities are assumed to be <code class="docutils literal notranslate"><span class="pre">set</span></code>.</p>
+<p>As an aide, use the following table:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>m</p></th>
+<th class="head"><p>n</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>set</p></td>
+<td><p>set</p></td>
+<td><p>No restrictions</p></td>
+</tr>
+<tr class="row-odd"><td><p>set</p></td>
+<td><p>some</p></td>
+<td><p>Each A used at least once</p></td>
+</tr>
+<tr class="row-even"><td><p>set</p></td>
+<td><p>one</p></td>
+<td><p>Each A is mapped to exactly one B (total
+function)</p></td>
+</tr>
+<tr class="row-odd"><td><p>set</p></td>
+<td><p>lone</p></td>
+<td><p>Each A is mapped to at most one B
+(partial function)</p></td>
+</tr>
+<tr class="row-even"><td><p>some</p></td>
+<td><p>set</p></td>
+<td><p>Each B mapped to at least once</p></td>
+</tr>
+<tr class="row-odd"><td><p>some</p></td>
+<td><p>some</p></td>
+<td><p>Every A mapped from and every B mapped
+to</p></td>
+</tr>
+<tr class="row-even"><td><p>some</p></td>
+<td><p>one</p></td>
+<td><p>Each A used exactly once, each B used at
+least once</p></td>
+</tr>
+<tr class="row-odd"><td><p>some</p></td>
+<td><p>lone</p></td>
+<td><p>Each A used at most once, each B used at
+least once</p></td>
+</tr>
+<tr class="row-even"><td><p>one</p></td>
+<td><p>set</p></td>
+<td><p>Each B used exactly once, no other
+restrictions (one A can map to two B
+atoms)</p></td>
+</tr>
+<tr class="row-odd"><td><p>one</p></td>
+<td><p>some</p></td>
+<td><p>Each B used exactly once, each A used at
+least once</p></td>
+</tr>
+<tr class="row-even"><td><p>one</p></td>
+<td><p>one</p></td>
+<td><p>Only satisfiable if #A = #B, bijection</p></td>
+</tr>
+<tr class="row-odd"><td><p>one</p></td>
+<td><p>lone</p></td>
+<td><p>At most #A arrows, exactly #B arrows,
+each A used at most once</p></td>
+</tr>
+<tr class="row-even"><td><p>lone</p></td>
+<td><p>set</p></td>
+<td><p>Each B used at most once</p></td>
+</tr>
+<tr class="row-odd"><td><p>lone</p></td>
+<td><p>some</p></td>
+<td><p>Each A used at least once and each B
+used at most once</p></td>
+</tr>
+<tr class="row-even"><td><p>lone</p></td>
+<td><p>one</p></td>
+<td><p>Each A used exactly once, each B used at
+most once</p></td>
+</tr>
+<tr class="row-odd"><td><p>lone</p></td>
+<td><p>lone</p></td>
+<td><p>Each A used at most once, each B used at
+most once</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-todo admonition" id="id5">
+<p class="admonition-title">Todo</p>
+<p>Replace the autogen table with a proper list table that doesn’t require exact rst formatting</p>
+</div>
+<p>Not all multiplicities will have valid models. For example,</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">A</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">B</span> <span class="o">{}</span>
+<span class="k">one</span> <span class="kd">sig</span> <span class="n">C</span> <span class="o">{</span>
+  <span class="n">r</span><span class="p">:</span> <span class="n">A</span> <span class="k">one</span> <span class="o">-&gt;</span> <span class="k">one</span> <span class="n">B</span>
+<span class="o">}</span>
+
+<span class="k">run</span> <span class="o">{}</span> <span class="k">for</span> <span class="k">exactly</span> <span class="mi">3</span> <span class="n">A</span><span class="p">,</span> <span class="k">exactly</span> <span class="mi">2</span> <span class="n">B</span>
+</pre></div>
+</div>
+<p>Since <code class="docutils literal notranslate"><span class="pre">r</span></code> must be 1-1, and there’s different numbers of A and B sigs, nothing satisfies this model.</p>
+<p>Multirelations can go higher than ternary using the same syntax, but this is generally not recommended.</p>
+</div>
+</div>
+<div class="section" id="signature-multiplicity">
+<span id="id6"></span><h2>Signature Multiplicity<a class="headerlink" href="#signature-multiplicity" title="Permalink to this headline">¶</a></h2>
+<p>In addition to having multiplicity relationships, we can put
+multiplicities on the signatures themselves.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">one</span> <span class="kd">sig</span> <span class="n">Foo</span> <span class="o">{}</span>
+<span class="k">some</span> <span class="kd">sig</span> <span class="n">Bar</span> <span class="o">{}</span>
+<span class="c1">//etc</span>
+</pre></div>
+</div>
+<p>By default, signatures have multiplicity <code class="docutils literal notranslate"><span class="pre">set</span></code>, and there may be zero
+or more in the model. By making the signature <code class="docutils literal notranslate"><span class="pre">one</span></code>, every model will
+have exactly one atom of that signature. By writing <code class="docutils literal notranslate"><span class="pre">some</span></code>, there will
+be at least one. By writing <code class="docutils literal notranslate"><span class="pre">lone</span></code>, there will be zero or one.</p>
+</div>
+<div class="section" id="subtypes">
+<span id="id7"></span><h2>Subtypes<a class="headerlink" href="#subtypes" title="Permalink to this headline">¶</a></h2>
+<p>We can make some signatures subtypes of other signatures.</p>
+<div class="section" id="in">
+<span id="subtype-in"></span><h3>in<a class="headerlink" href="#in" title="Permalink to this headline">¶</a></h3>
+<p>Writing <code class="docutils literal notranslate"><span class="pre">sig</span> <span class="pre">Child</span> <span class="pre">in</span> <span class="pre">Parent</span></code> creates an <em>inclusive</em> subtype: any
+Parent atoms may or may not also be a Child. This is also called a
+“subset subtype”.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Machine</span> <span class="o">{}</span>
+
+<span class="kd">sig</span> <span class="n">Broken</span> <span class="n">in</span> <span class="n">Machine</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">Online</span> <span class="n">in</span> <span class="n">Machine</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<p>In this case, any Machine can also be Broken, Online, both, or neither.</p>
+<div class="advanced section" id="subtype">
+<span id="id8"></span><h4><code class="docutils literal notranslate"><span class="pre">+</span></code><a class="headerlink" href="#subtype" title="Permalink to this headline">¶</a></h4>
+<p>A single inclusive subtype can be defined for many parent signatures. We
+can do this by using the set union operator on the parent signatures.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span>sig Bill, Client {}
+
+sig Closed in Bill + Client {}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="extends">
+<span id="id9"></span><h3>extends<a class="headerlink" href="#extends" title="Permalink to this headline">¶</a></h3>
+<p>Writing <code class="docutils literal notranslate"><span class="pre">sig</span> <span class="pre">Child</span> <span class="pre">extends</span> <span class="pre">Parent</span></code> creates a subtype, as with <code class="docutils literal notranslate"><span class="pre">in</span></code>.
+Unlike <code class="docutils literal notranslate"><span class="pre">in</span></code>, though, any Parent atom can only match up to <em>one</em>
+extension.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Machine</span> <span class="o">{}</span>
+
+<span class="kd">sig</span> <span class="n">Server</span> <span class="k">extends</span> <span class="n">Machine</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">Client</span> <span class="k">extends</span> <span class="n">Machine</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<p>In this case, any Machine can also be a Server, a Client, or neither,
+but not both.</p>
+<div class="admonition-todo admonition" id="id10">
+<p class="admonition-title">Todo</p>
+<p>[img]</p>
+</div>
+<p>Something can belong to both <code class="docutils literal notranslate"><span class="pre">extend</span></code> and <code class="docutils literal notranslate"><span class="pre">in</span></code> subtypes.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Machine</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">Broken</span> <span class="n">in</span> <span class="n">Machine</span> <span class="o">{}</span>
+
+<span class="kd">sig</span> <span class="n">Server</span> <span class="k">extends</span> <span class="n">Machine</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">Client</span> <span class="k">extends</span> <span class="n">Machine</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<p>A Machine can be both a Server and Broken, or a Client and Broken, or just one of the three, or none at all.</p>
+<div class="section" id="abstract">
+<span id="id11"></span><h4>abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h4>
+<p>If you make a signature <code class="docutils literal notranslate"><span class="pre">abstract</span></code>, then all instances of the
+signature will be extensions, and there will be no signatures that are
+still the base.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">abstract</span> <span class="kd">sig</span> <span class="n">Machine</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">Broken</span> <span class="n">in</span> <span class="n">Machine</span> <span class="o">{}</span>
+
+<span class="kd">sig</span> <span class="n">Server</span> <span class="k">extends</span> <span class="n">Machine</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">Client</span> <span class="k">extends</span> <span class="n">Machine</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<p>Here any machine <strong>must</strong> be either a Server or a Client. They still may
+or may not be Broken.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If there is nothing extending an abstract signature, the abstract is ignored.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can place multiple signatures on the same line.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Server</span><span class="p">,</span> <span class="n">Client</span> <span class="k">extends</span> <span class="n">Machine</span> <span class="o">{}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="subtypes-and-relationships">
+<h3>Subtypes and Relationships<a class="headerlink" href="#subtypes-and-relationships" title="Permalink to this headline">¶</a></h3>
+<p>All subtypes are also their parent type. So if we have</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">B</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">C</span> <span class="n">in</span> <span class="n">B</span> <span class="o">{}</span>
+
+<span class="kd">sig</span> <span class="n">A</span> <span class="o">{</span>
+ <span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">B</span>
+ <span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="n">C</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Then the <code class="docutils literal notranslate"><span class="pre">b</span></code> relation can include <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">C</span></code>, but <code class="docutils literal notranslate"><span class="pre">c</span></code> <strong>cannot</strong> include <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span></code>.</p>
+</div>
+<div class="advanced section" id="child-relations">
+<span id="id12"></span><h3>Child Relations<a class="headerlink" href="#child-relations" title="Permalink to this headline">¶</a></h3>
+<p>Children automatically inherit all of their Parent fields, <em>and also</em> can define their own fields. We can have:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Person</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">Account</span> <span class="o">{</span>
+  <span class="p">,</span> <span class="n">person</span><span class="p">:</span> <span class="n">Person</span>
+<span class="o">}</span>
+
+<span class="kd">sig</span> <span class="n">PremiumAccount</span> <span class="n">in</span> <span class="n">Account</span> <span class="o">{</span>
+  <span class="p">,</span> <span class="n">billing</span><span class="p">:</span> <span class="n">Person</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Then all <code class="docutils literal notranslate"><span class="pre">Account</span></code> atoms will have the <code class="docutils literal notranslate"><span class="pre">person</span></code> field, while all <code class="docutils literal notranslate"><span class="pre">PremiumAccount</span></code> atoms will have both a <code class="docutils literal notranslate"><span class="pre">person</span></code> field and a <code class="docutils literal notranslate"><span class="pre">billing</span></code> field.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This also applies to <a class="reference internal" href="predicates-and-functions.html#implicit-facts"><span class="std std-ref">Implicit Facts</span></a>. If Account has an implicit fact, it automatically applies to PremiumAccount.</p>
+</div>
+<p>It is not possible redefine a relationship, only to add additional ones.</p>
+</div>
+</div>
+<div class="advanced section" id="enums">
+<span id="id13"></span><h2>Enums<a class="headerlink" href="#enums" title="Permalink to this headline">¶</a></h2>
+<p>Enums are a special signature.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">Time</span> <span class="o">{</span><span class="n">Morning</span><span class="p">,</span> <span class="n">Noon</span><span class="p">,</span> <span class="n">Night</span><span class="o">}</span>
+</pre></div>
+</div>
+<p>The enum will always have the defined atoms in it. Additionally, the
+atom will have an <a class="reference internal" href="../modules/ordering.html#module-ordering" title="ordering"><code class="xref any py py-mod docutils literal notranslate"><span class="pre">ordering</span></code></a>. In this case, Morning will be the first
+element, Noon the second, and Night will be the third. You can use enums
+in facts and predicates, but you cannot add additional properties to
+them.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you want to use an enumeration with properties, you can emulate this
+by using <code class="docutils literal notranslate"><span class="pre">one</span></code> and signature extensions.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">abstract</span> <span class="kd">sig</span> <span class="n">Time</span> <span class="o">{}</span>
+
+<span class="k">one</span> <span class="kd">sig</span> <span class="n">Morning</span><span class="p">,</span> <span class="n">Noon</span><span class="p">,</span> <span class="n">Night</span> <span class="k">extends</span> <span class="n">Time</span> <span class="o">{</span>
+    <span class="n">time</span><span class="p">:</span> <span class="n">Time</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>You can also use this to make enumerations without a fixed number of
+elements, by using <code class="docutils literal notranslate"><span class="pre">lone</span></code> instead.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Each enum implicitly imports <a class="reference internal" href="../modules/ordering.html#module-ordering" title="ordering"><code class="xref any py py-mod docutils literal notranslate"><span class="pre">ordering</span></code></a>. The following is invalid:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">A</span> <span class="o">{</span><span class="n">a</span><span class="o">}</span>
+
+<span class="kd">enum</span> <span class="n">B</span> <span class="o">{</span><span class="n">b</span><span class="o">}</span>
+
+<span class="k">run</span> <span class="o">{</span><span class="k">some</span> <span class="n">first</span><span class="o">}</span>
+</pre></div>
+</div>
+<p>As it is ambiguous whether <code class="docutils literal notranslate"><span class="pre">first</span></code> should return <code class="docutils literal notranslate"><span class="pre">a</span></code> or <code class="docutils literal notranslate"><span class="pre">b</span></code>. If you need to use both an enum inside of a dynamic model, be sure to use a <a class="reference internal" href="modules.html#namespaces"><span class="std std-ref">namespace</span></a> when importing <a class="reference internal" href="../modules/ordering.html#module-ordering" title="ordering"><code class="xref any py py-mod docutils literal notranslate"><span class="pre">ordering</span></code></a>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sets-and-relations.html" class="btn btn-neutral float-right" title="Sets and Relations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Language" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

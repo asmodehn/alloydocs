@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Boolean Fields &mdash; Alloy Documentation  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dynamic Models" href="dynamics.html" />
+    <link rel="prev" title="Techniques" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Alloy Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tooling/index.html">Tooling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Techniques</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Boolean Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subtyping">Subtyping</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lone-fields">lone fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-boolean-module">The <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dynamics.html">Dynamic Models</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Alloy Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Techniques</a> &raquo;</li>
+        
+      <li>Boolean Fields</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/techniques/boolean-fields.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="boolean-fields">
+<h1>Boolean Fields<a class="headerlink" href="#boolean-fields" title="Permalink to this headline">¶</a></h1>
+<p>Often software properties are expressed as booleans, either true or false.  But Alloy doesn’t have a native boolean type. There are two ways to emulate this.</p>
+<p>For this example we want something akin to</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Account</span> <span class="o">{</span>
+  <span class="n">premium</span><span class="p">:</span> <span class="n">bool</span> <span class="c1">-- invalid, not a real type</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="section" id="subtyping">
+<span id="boolean-subtyping"></span><h2>Subtyping<a class="headerlink" href="#subtyping" title="Permalink to this headline">¶</a></h2>
+<p>Using <a class="reference internal" href="../language/signatures.html#subtype-in"><span class="std std-ref">in</span></a> subtypes is the standard way to model booleans:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Account</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">PremiumAccount</span> <span class="n">in</span> <span class="n">Account</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<p>Then the boolean can be tested with <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">in</span> <span class="pre">PremiumAccount</span></code>. This method has a number of advantages:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PremiumAccount</span></code> and <code class="docutils literal notranslate"><span class="pre">Account</span> <span class="pre">-</span> <span class="pre">PremiumAccount</span></code> can be used in the signatures of other fields.</p></li>
+<li><p>Premium accounts can have additional fields.</p></li>
+<li><p>You can create a custom <a class="reference internal" href="../tooling/themes.html#themes"><span class="std std-ref">theme</span></a> for premium accounts.</p></li>
+<li><p>The analyzer will generally be faster.</p></li>
+</ul>
+<div class="section" id="lone-fields">
+<h3>lone fields<a class="headerlink" href="#lone-fields" title="Permalink to this headline">¶</a></h3>
+<p>Booleans can also be represented using <code class="docutils literal notranslate"><span class="pre">lone</span></code>:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">one</span> <span class="kd">sig</span> <span class="n">Premium</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">Account</span> <span class="o">{</span>
+  <span class="p">,</span> <span class="n">premium</span><span class="p">:</span> <span class="k">lone</span> <span class="n">Premium</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Then the boolean can be tested with <code class="docutils literal notranslate"><span class="pre">some</span> <span class="pre">a.premium</span></code>, and the set of all premium accounts is <code class="docutils literal notranslate"><span class="pre">premium.Premium</span></code>.  Using lone is somewhat simpler than using a subtype, but it’s less flexible overall, and the boolean cannot be used in the fields of other signatures.</p>
+</div>
+<div class="section" id="the-boolean-module">
+<h3>The <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> module<a class="headerlink" href="#the-boolean-module" title="Permalink to this headline">¶</a></h3>
+<p>If subtyping is insufficient, you can also use the <a class="reference internal" href="../modules/boolean.html#module-boolean" title="boolean"><code class="xref py py-mod docutils literal notranslate"><span class="pre">boolean</span></code></a> module. This is generlaly not recommended.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dynamics.html" class="btn btn-neutral float-right" title="Dynamic Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Techniques" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dynamic Models &mdash; Alloy Documentation  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Boolean Fields" href="boolean-fields.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Alloy Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tooling/index.html">Tooling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Techniques</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="boolean-fields.html">Boolean Fields</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dynamic Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#changing-object-signature">Changing Object Signature</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#traces">Traces</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#time-signatures">Time Signatures</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#representing-boolean-properties">Representing Boolean Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#representing-arbitrary-properties">Representing Arbitrary Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#common-issues">Common Issues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#incomplete-trace">Incomplete Trace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#no-models-found">“No Models Found”</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#limitations">Limitations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Alloy Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Techniques</a> &raquo;</li>
+        
+      <li>Dynamic Models</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/techniques/dynamics.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dynamic-models">
+<span id="dynamics"></span><h1>Dynamic Models<a class="headerlink" href="#dynamic-models" title="Permalink to this headline">¶</a></h1>
+<p>A <strong>dynamic model</strong> represents something changing over time. Alloy does not have a first-class notion of time, and dynamics must be encoded as part of the relationships. This is normally done by placing an <a class="reference internal" href="../modules/ordering.html#module-ordering" title="ordering"><code class="xref any py py-mod docutils literal notranslate"><span class="pre">ordering</span></code></a> on some signature, which then used to emulate time. There are several common ways of doing this.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../modules/time.html#module-time" title="time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">time</span></code></a></p>
+<blockquote>
+<div><p>A module with some utility macros to better model time.</p>
+</div></blockquote>
+</div>
+<div class="section" id="changing-object-signature">
+<h2>Changing Object Signature<a class="headerlink" href="#changing-object-signature" title="Permalink to this headline">¶</a></h2>
+<p>When only one entity is changing and there is only one instance of the signature to consider, we can place the ordering on the signature itself. Then each atom of that signature represents the state of the entity at a different point in time.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Full spec downloadable <a class="reference download internal" download="" href="../_downloads/2f09d32a93fd4371442e6db087147931/light.als"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">util</span><span class="o">/</span><span class="n">ordering</span><span class="o">[</span><span class="n">Light</span><span class="o">]</span> <span class="k">as</span> <span class="n">ord</span>
+
+<span class="k">abstract</span> <span class="kd">sig</span> <span class="n">Color</span> <span class="o">{}</span>
+<span class="k">one</span> <span class="kd">sig</span> <span class="n">Red</span><span class="p">,</span> <span class="n">Yellow</span><span class="p">,</span> <span class="n">Green</span> <span class="k">extends</span> <span class="n">Color</span> <span class="o">{}</span>
+
+<span class="kd">sig</span> <span class="n">Light</span> <span class="o">{</span>
+  <span class="n">color</span><span class="p">:</span> <span class="n">Color</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<p>While there are multiple <code class="docutils literal notranslate"><span class="pre">Light</span></code> atoms, they all represent the same physical “traffic light”, just at different points in time.</p>
+<p>The dynamic model is modeled by a state change predicate, which relates each light to the next light in the sequence.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Full spec downloadable <a class="reference download internal" download="" href="../_downloads/2f09d32a93fd4371442e6db087147931/light.als"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">pred</span> <span class="n">change_light</span><span class="o">[</span><span class="n">l</span><span class="p">:</span> <span class="n">Light</span><span class="o">]</span> <span class="o">{</span>
+
+  <span class="k">let</span> <span class="n">l&#39;</span> <span class="o">=</span> <span class="n">l</span><span class="o">.(</span><span class="n">ord</span><span class="o">/</span><span class="n">next</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">Red</span> <span class="o">=&gt;</span> <span class="n">l&#39;</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">Green</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">Green</span> <span class="o">=&gt;</span> <span class="n">l&#39;</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">Yellow</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">Yellow</span> <span class="o">=&gt;</span> <span class="n">l&#39;</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">Red</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<p>Conventionally <a class="reference internal" href="../modules/ordering.html#module-ordering" title="ordering"><code class="xref any py py-mod docutils literal notranslate"><span class="pre">ordering</span></code></a> is <em>not</em> namespaced. We do it here to make the imported functions clearer.</p>
+<div class="section" id="traces">
+<span id="trace"></span><h3>Traces<a class="headerlink" href="#traces" title="Permalink to this headline">¶</a></h3>
+<p>A <em class="dfn">trace</em> is a <a class="reference internal" href="../language/predicates-and-functions.html#facts"><span class="std std-ref">fact</span></a> that describes how the system will evolve, by constraining “valid models” to ones where the system evolves properly.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Full spec downloadable <a class="reference download internal" download="" href="../_downloads/2f09d32a93fd4371442e6db087147931/light.als"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">fact</span> <span class="n">Trace</span> <span class="o">{</span>
+  <span class="n">ord</span><span class="o">/</span><span class="n">first</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">Red</span>
+
+  <span class="k">all</span> <span class="n">l</span><span class="p">:</span> <span class="n">Light</span> <span class="o">-</span> <span class="n">ord</span><span class="o">/</span><span class="n">last</span> <span class="o">|</span>
+    <span class="n">change_light</span><span class="o">[</span><span class="n">l</span><span class="o">]</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../modules/ordering.html#first" title="first"><code class="xref any als als-func docutils literal notranslate"><span class="pre">first</span></code></a> and <code class="docutils literal notranslate"><span class="pre">last</span></code> are from the <a class="reference internal" href="../modules/ordering.html#module-ordering" title="ordering"><code class="xref any py py-mod docutils literal notranslate"><span class="pre">ordering</span></code></a> module. This sets the first light to red and every subsequent light to the next color in the chain.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We write <code class="docutils literal notranslate"><span class="pre">Light</span> <span class="pre">-</span> <span class="pre">last</span></code> because <code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">last.next</span></code>, so the predicate would be false.</p>
+</div>
+</div>
+</div>
+<div class="section" id="time-signatures">
+<h2>Time Signatures<a class="headerlink" href="#time-signatures" title="Permalink to this headline">¶</a></h2>
+<p>For more complex specifications we use a <code class="docutils literal notranslate"><span class="pre">Time</span></code> signature. This is useful if we have multiple things that are changing or multiple properties that can change. The ordering is placed on <code class="docutils literal notranslate"><span class="pre">Time</span></code> and the signature fields are all related to that time.</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Full spec downloadable <a class="reference download internal" download="" href="../_downloads/8c934a44e76f861d22ba66ade23d77ee/keyboard.als"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">util</span><span class="o">/</span><span class="n">ordering</span><span class="o">[</span><span class="n">Time</span><span class="o">]</span>
+
+<span class="kd">sig</span> <span class="n">Time</span> <span class="o">{}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="representing-boolean-properties">
+<span id="dynamic-booleans"></span><h3>Representing Boolean Properties<a class="headerlink" href="#representing-boolean-properties" title="Permalink to this headline">¶</a></h3>
+<p>If the changing value is a boolean, the best way to represent that is to have a field that is <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">Time</span></code>, which represents the times where that field is true:</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Full spec downloadable <a class="reference download internal" download="" href="../_downloads/8c934a44e76f861d22ba66ade23d77ee/keyboard.als"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Key</span> <span class="o">{</span>
+  <span class="n">pressed</span><span class="p">:</span> <span class="k">set</span> <span class="n">Time</span>
+<span class="o">}</span>
+
+<span class="k">pred</span> <span class="n">press</span><span class="o">[</span><span class="n">k</span><span class="p">:</span> <span class="n">Key</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Time</span><span class="o">]</span> <span class="o">{</span>
+  <span class="n">t</span> <span class="n">not</span> <span class="ow">in</span> <span class="n">k</span><span class="o">.</span><span class="n">pressed</span>
+  <span class="n">t</span><span class="o">.</span><span class="n">next</span> <span class="ow">in</span> <span class="n">k</span><span class="o">.</span><span class="n">pressed</span>
+<span class="o">}</span>
+
+<span class="k">pred</span> <span class="n">release</span><span class="o">[</span><span class="n">k</span><span class="p">:</span> <span class="n">Key</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Time</span><span class="o">]</span> <span class="o">{</span>
+  <span class="n">t</span> <span class="ow">in</span> <span class="n">k</span><span class="o">.</span><span class="n">pressed</span>
+  <span class="n">t</span><span class="o">.</span><span class="n">next</span> <span class="n">not</span> <span class="ow">in</span> <span class="n">k</span><span class="o">.</span><span class="n">pressed</span>
+<span class="o">}</span>
+
+<span class="k">pred</span> <span class="n">changed</span><span class="o">[</span><span class="n">k</span><span class="p">:</span> <span class="n">Key</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Time</span><span class="o">]</span> <span class="o">{</span>
+  <span class="n">press</span><span class="o">[</span><span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="o">]</span> <span class="ow">or</span> <span class="n">release</span><span class="o">[</span><span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="o">]</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<p>We will assume that only one key can be pressed or released at a given time. This means that the trace must specify that some key changes <em>and also</em> that no other key changes.</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Full spec downloadable <a class="reference download internal" download="" href="../_downloads/8c934a44e76f861d22ba66ade23d77ee/keyboard.als"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">fact</span> <span class="n">Trace</span> <span class="o">{</span>
+  <span class="k">no</span> <span class="n">first</span><span class="o">.~</span><span class="n">pressed</span>
+  <span class="k">all</span> <span class="n">t</span><span class="p">:</span> <span class="n">Time</span> <span class="o">-</span> <span class="n">last</span> <span class="o">|</span>
+    <span class="k">some</span> <span class="n">k</span><span class="p">:</span> <span class="n">Key</span> <span class="o">{</span>
+      <span class="n">changed</span><span class="o">[</span><span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="o">]</span>
+      <span class="k">all</span> <span class="n">k&#39;</span><span class="p">:</span> <span class="n">Key</span> <span class="o">-</span> <span class="n">k</span> <span class="o">|</span>
+        <span class="n">not</span> <span class="n">changed</span><span class="o">[</span><span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="o">]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We could have instead written it this way, using <code class="docutils literal notranslate"><span class="pre">one</span></code> instad of <code class="docutils literal notranslate"><span class="pre">some</span></code>:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">all</span> <span class="n">t</span><span class="p">:</span> <span class="n">Time</span> <span class="o">-</span> <span class="n">last</span> <span class="o">|</span>
+  <span class="k">one</span> <span class="n">k</span><span class="p">:</span> <span class="n">Key</span> <span class="o">|</span>
+    <span class="n">changed</span><span class="o">[</span><span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>Which would have enforced that no other keys changed by default. Using <code class="docutils literal notranslate"><span class="pre">one</span></code> in these contexts can be error-prone, so it’s avoided for the purposes of this page.</p>
+</div>
+<p>Conventionally, state-change predicates are written to take two time parameters, where the trace then passes in both <code class="docutils literal notranslate"><span class="pre">t</span></code> and <code class="docutils literal notranslate"><span class="pre">t.next</span></code>.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">pred</span> <span class="n">release</span><span class="o">[</span><span class="n">k</span><span class="p">:</span> <span class="n">Key</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t&#39;</span><span class="p">:</span> <span class="n">Time</span><span class="o">]</span> <span class="o">{</span>
+  <span class="n">t</span> <span class="ow">in</span> <span class="n">k</span><span class="o">.</span><span class="n">pressed</span>
+  <span class="n">t&#39;</span> <span class="n">not</span> <span class="ow">in</span> <span class="n">k</span><span class="o">.</span><span class="n">pressed</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="representing-arbitrary-properties">
+<h3>Representing Arbitrary Properties<a class="headerlink" href="#representing-arbitrary-properties" title="Permalink to this headline">¶</a></h3>
+<p>Information beyond booleans can be encoded with <a class="reference internal" href="../language/signatures.html#multirelations"><span class="std std-ref">Multirelations</span></a>.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>break this up and explain what’s going on</p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Full spec downloadable <a class="reference download internal" download="" href="../_downloads/8ff480968a6a275e9c0737e5d2846746/browsing.als"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">util</span><span class="o">/</span><span class="n">ordering</span><span class="o">[</span><span class="n">Time</span><span class="o">]</span>
+
+<span class="kd">sig</span> <span class="n">Time</span> <span class="o">{}</span>
+
+<span class="kd">sig</span> <span class="n">User</span> <span class="o">{</span>
+  <span class="c1">-- current place in time</span>
+  <span class="p">,</span> <span class="n">at</span><span class="p">:</span> <span class="n">Page</span> <span class="k">one</span> <span class="o">-&gt;</span> <span class="n">Time</span>
+
+  <span class="c1">-- all visited pages</span>
+  <span class="p">,</span> <span class="n">history</span><span class="p">:</span> <span class="n">Page</span> <span class="o">-&gt;</span> <span class="n">Time</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<p>Writing <code class="docutils literal notranslate"><span class="pre">Page</span> <span class="pre">one</span> <span class="pre">-&gt;</span> <span class="pre">Time</span></code> indicates that for every Person and Time, there is exactly one page. Writing <code class="docutils literal notranslate"><span class="pre">Page</span> <span class="pre">-&gt;</span> <span class="pre">Time</span></code> also any number of pages per person/time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There’s no innate reason why we use <code class="docutils literal notranslate"><span class="pre">Page</span> <span class="pre">-&gt;</span> <span class="pre">Time</span></code> instead of <code class="docutils literal notranslate"><span class="pre">Time</span> <span class="pre">-&gt;</span> <span class="pre">Page</span></code>. However, making Time the end of the multirelation is conventional.</p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">Full spec downloadable <a class="reference download internal" download="" href="../_downloads/8ff480968a6a275e9c0737e5d2846746/browsing.als"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Page</span> <span class="o">{</span>
+  <span class="c1">-- pages reachable from this page</span>
+  <span class="n">link</span><span class="p">:</span> <span class="k">set</span> <span class="n">Page</span>
+<span class="o">}</span>
+
+<span class="k">pred</span> <span class="n">goto</span><span class="o">[</span><span class="n">u</span><span class="p">:</span> <span class="n">User</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="n">Page</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t&#39;</span><span class="p">:</span> <span class="n">Time</span><span class="o">]</span> <span class="o">{</span>
+  <span class="c1">-- valid page to change to</span>
+  <span class="n">p</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">at</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">link</span>
+
+  <span class="c1">-- change pages</span>
+  <span class="n">p</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">at</span><span class="o">.</span><span class="n">t&#39;</span>
+
+  <span class="c1">-- save new page in history</span>
+  <span class="n">u</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">t&#39;</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">t</span> <span class="o">+</span> <span class="n">p</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<p>When using multirelations of form <code class="docutils literal notranslate"><span class="pre">rel</span> <span class="pre">=</span> <span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span> <span class="pre">-&gt;</span> <span class="pre">Time</span></code>, we get the value of <code class="docutils literal notranslate"><span class="pre">b</span></code> at time <code class="docutils literal notranslate"><span class="pre">t</span></code> with <code class="docutils literal notranslate"><span class="pre">a.rel.t</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">Full spec downloadable <a class="reference download internal" download="" href="../_downloads/8ff480968a6a275e9c0737e5d2846746/browsing.als"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">pred</span> <span class="n">stay</span><span class="o">[</span><span class="n">u</span><span class="p">:</span> <span class="n">User</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t&#39;</span><span class="p">:</span> <span class="n">Time</span><span class="o">]</span> <span class="o">{</span>
+  <span class="n">u</span><span class="o">.</span><span class="n">at</span><span class="o">.</span><span class="n">t&#39;</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">at</span><span class="o">.</span><span class="n">t</span>
+  <span class="n">u</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">t&#39;</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">t</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">stay</span></code> is a “stuttering” predicate which makes it valid for a user to not change at the next time step. Without it <code class="docutils literal notranslate"><span class="pre">goto</span></code> would have to be true for every single user at every time in the trace.</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">Full spec downloadable <a class="reference download internal" download="" href="../_downloads/8ff480968a6a275e9c0737e5d2846746/browsing.als"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">fact</span> <span class="n">trace</span> <span class="o">{</span>
+  <span class="c1">-- everybody starts with their initial page in history</span>
+  <span class="n">at</span><span class="o">.</span><span class="n">first</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">first</span> 
+  <span class="k">all</span> <span class="n">t</span><span class="p">:</span> <span class="n">Time</span> <span class="o">-</span> <span class="n">last</span> <span class="o">|</span>
+    <span class="k">let</span> <span class="n">t&#39;</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next</span> <span class="o">{</span>
+      <span class="k">all</span> <span class="n">u</span><span class="p">:</span> <span class="n">User</span> <span class="o">|</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">stay</span><span class="o">[</span><span class="n">t</span><span class="p">,</span> <span class="n">t&#39;</span><span class="o">]</span> <span class="ow">or</span>
+        <span class="k">some</span> <span class="n">p</span><span class="p">:</span> <span class="n">Page</span> <span class="o">|</span> <span class="n">u</span><span class="o">.</span><span class="n">goto</span><span class="o">[</span><span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t&#39;</span><span class="o">]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="common-issues">
+<h2>Common Issues<a class="headerlink" href="#common-issues" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="incomplete-trace">
+<h3>Incomplete Trace<a class="headerlink" href="#incomplete-trace" title="Permalink to this headline">¶</a></h3>
+<p>The trace must fully cover what happens to all dynamic signatures. If not, weird things happen. Consider the following alternate trace for the browsing model:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">fact</span> <span class="n">Trace</span> <span class="o">{</span>
+  <span class="n">at</span><span class="o">.</span><span class="n">first</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">first</span> <span class="c1">-- everybody starts with their initial page in history</span>
+  <span class="k">all</span> <span class="n">t</span><span class="p">:</span> <span class="n">Time</span> <span class="o">-</span> <span class="n">last</span> <span class="o">|</span>
+    <span class="k">let</span> <span class="n">t&#39;</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">next</span> <span class="o">{</span>
+      <span class="k">one</span> <span class="n">u</span><span class="p">:</span> <span class="n">User</span> <span class="o">|</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">stay</span><span class="o">[</span><span class="n">t</span><span class="p">,</span> <span class="n">t&#39;</span><span class="o">]</span> <span class="ow">or</span>
+        <span class="k">some</span> <span class="n">p</span><span class="p">:</span> <span class="n">Page</span> <span class="o">|</span> <span class="n">u</span><span class="o">.</span><span class="n">goto</span><span class="o">[</span><span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t&#39;</span><span class="o">]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>This is true iff <em>exactly one</em> User either stays or goes to a valid page. This allows them to do anything that’s not covered by the two predicates. A user may go to an unlinked page, or stay on the same page but change their history to include a page they never visited.</p>
+</div>
+<div class="section" id="no-models-found">
+<h3>“No Models Found”<a class="headerlink" href="#no-models-found" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ordering</span></code> implicity makes the ordered signature <a class="reference internal" href="../language/commands.html#exactly"><span class="std std-ref">exact</span></a> and this cannot be overridden. If a dynamic spec does not exist, it’s likely due to this.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">util</span><span class="o">/</span><span class="n">ordering</span><span class="o">[</span><span class="n">State</span><span class="o">]</span>
+
+<span class="kd">sig</span> <span class="n">State</span> <span class="o">{}</span>
+
+<span class="k">run</span> <span class="o">{#</span><span class="n">State</span> <span class="o">=</span> <span class="mi">2</span><span class="o">}</span> <span class="c1">-- no models</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<ol class="arabic simple">
+<li><p>Cases where multiple things relating to each other interact, like the ring election spec. So the predicates step on each others toes.</p></li>
+<li><p>Writing temporal assertions</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<p>There are some limitations to what we can model in a dynamic system.</p>
+<ul class="simple">
+<li><p>Alloy cannot tell if a system has <strong>deadlocked</strong>. A deadlock is when there is no valid next state as part of the trace. If the trace is encoded as a fact, then the entire model is discarded. If the trace is encoded as a predicate, Alloy will provide any model that doesn’t match the trace as a counterexample.</p></li>
+<li><p>Alloy cannot test that some property is guaranteed to happen in infinite time, aka <strong>liveness</strong>.</p></li>
+<li><p>Alloy cannot emulate <strong>fair</strong> dynamic systems.</p></li>
+</ul>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>representing with a Seq</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="boolean-fields.html" class="btn btn-neutral float-left" title="Boolean Fields" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

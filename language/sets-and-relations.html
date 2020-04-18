@@ -1,0 +1,569 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sets and Relations &mdash; Alloy Documentation  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Expressions and Constraints" href="expressions-and-constraints.html" />
+    <link rel="prev" title="Signatures" href="signatures.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Alloy Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Language</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="signatures.html">Signatures</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sets and Relations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sets">Sets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#set-operators">Set Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integers">Integers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#relations">Relations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-operator">The . Operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#iden">iden</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-operators">Additional Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-operators">Advanced Operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="expressions-and-constraints.html">Expressions and Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates-and-functions.html">Predicates and Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tooling/index.html">Tooling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../techniques/index.html">Techniques</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Alloy Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Language</a> &raquo;</li>
+        
+      <li>Sets and Relations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/language/sets-and-relations.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sets-and-relations">
+<span id="id1"></span><h1>Sets and Relations<a class="headerlink" href="#sets-and-relations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sets">
+<span id="id2"></span><h2>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h2>
+<p>A set is a collection of unique, unordered elements. All Alloy
+expressions use sets of atoms and <a class="reference internal" href="#relations"><span class="std std-ref">Relations</span></a>. All
+elements of a set must have the same arity, but can otherwise freely mix
+types of elements.</p>
+<p>Adding a signature automatically defines the set of all atoms in that
+signature. Given</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Teacher</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">Student</span> <span class="o">{</span>
+  <span class="n">teacher</span><span class="p">:</span> <span class="n">Teacher</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Then the spec recognizes <code class="docutils literal notranslate"><span class="pre">Student</span></code> as the set of all atoms of type
+<code class="docutils literal notranslate"><span class="pre">Student</span></code>, and likewise with the <code class="docutils literal notranslate"><span class="pre">Teacher</span></code> signature and the
+<code class="docutils literal notranslate"><span class="pre">teacher</span></code> relationship.</p>
+<p>Everything in Alloy is a set. If <code class="docutils literal notranslate"><span class="pre">S1</span></code> is a <code class="docutils literal notranslate"><span class="pre">Student</span></code> atom, then
+<code class="docutils literal notranslate"><span class="pre">S1</span></code> is the set containing just <code class="docutils literal notranslate"><span class="pre">S1</span></code> as an element.</p>
+<p>There are also two special sets:</p>
+<span id="none"></span><ul class="simple" id="univ">
+<li><p><code class="docutils literal notranslate"><span class="pre">none</span></code> is just the empty set. Saying <code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">Set</span></code> is the same as saying <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">=</span> <span class="pre">none</span></code>. See <a class="reference internal" href="expressions-and-constraints.html#expressions"><span class="std std-ref">Expressions</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">univ</span></code> is the set of all atoms in the model. In this example, <code class="docutils literal notranslate"><span class="pre">univ</span> <span class="pre">=</span> <span class="pre">Student</span> <span class="pre">+</span> <span class="pre">Teacher</span></code>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, the analyzer also generates a set of integers for each model, which will appear in <code class="docutils literal notranslate"><span class="pre">univ</span></code>. This can almost always be ignored in specifications (but see <a class="reference internal" href="#id5"><span class="std std-ref">#</span></a> below).</p>
+</div>
+<div class="section" id="set-operators">
+<h3>Set Operators<a class="headerlink" href="#set-operators" title="Permalink to this headline">¶</a></h3>
+<p>Set operators can be used to construct new sets from existing ones, for
+use in expressions and predicates.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">S1</span> <span class="pre">+</span> <span class="pre">S2</span></code> is the set of all elements in either <code class="docutils literal notranslate"><span class="pre">S1</span></code> or <code class="docutils literal notranslate"><span class="pre">S2</span></code>
+(set union).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">S1</span> <span class="pre">-</span> <span class="pre">S2</span></code> is the set of all elements in <code class="docutils literal notranslate"><span class="pre">S1</span></code> but not <code class="docutils literal notranslate"><span class="pre">S2</span></code> (set
+difference).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">S1</span> <span class="pre">&amp;</span> <span class="pre">S2</span></code> is the set of all elements in both <code class="docutils literal notranslate"><span class="pre">S1</span></code> and <code class="docutils literal notranslate"><span class="pre">S2</span></code> (set
+intersection).</p></li>
+</ul>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="n">S1</span> <span class="o">=</span> <span class="o">{</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="o">}</span>
+<span class="n">S2</span> <span class="o">=</span> <span class="o">{</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="o">}</span>
+
+<span class="n">S1</span> <span class="o">+</span> <span class="n">S2</span> <span class="o">=</span> <span class="o">{</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="o">}</span>
+<span class="n">S1</span> <span class="o">-</span> <span class="n">S2</span> <span class="o">=</span> <span class="o">{</span><span class="n">A</span><span class="o">}</span>
+<span class="n">S1</span> <span class="o">&amp;</span> <span class="n">S2</span> <span class="o">=</span> <span class="o">{</span><span class="n">B</span><span class="o">}</span>
+</pre></div>
+</div>
+<div class="section" id="used-as-an-operator">
+<span id="cartesian-product"></span><h4><code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> used as an operator<a class="headerlink" href="#used-as-an-operator" title="Permalink to this headline">¶</a></h4>
+<p>Given two sets, <code class="docutils literal notranslate"><span class="pre">Set1</span> <span class="pre">-&gt;</span> <span class="pre">Set2</span></code> is the <em>Cartesian product</em> of the two:
+the set of all relations that map any element of <code class="docutils literal notranslate"><span class="pre">Set1</span></code> to any element
+of <code class="docutils literal notranslate"><span class="pre">Set2</span></code>.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="n">Set1</span> <span class="o">=</span> <span class="o">{</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="o">}</span>
+<span class="n">Set2</span> <span class="o">=</span> <span class="o">{</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="o">}</span>
+
+<span class="n">Set1</span> <span class="o">-&gt;</span> <span class="n">Set2</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">X</span><span class="p">,</span> <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">Z</span><span class="p">,</span>
+  <span class="n">B</span> <span class="o">-&gt;</span> <span class="n">X</span><span class="p">,</span> <span class="n">B</span> <span class="o">-&gt;</span> <span class="n">Y</span><span class="p">,</span> <span class="n">B</span> <span class="o">-&gt;</span> <span class="n">Z</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>As with other operators, a standalone atom is the set
+containing that atom. So we can write <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">(X</span> <span class="pre">+</span> <span class="pre">Y)</span></code> to get
+<code class="docutils literal notranslate"><span class="pre">(A</span> <span class="pre">-&gt;</span> <span class="pre">X</span> <span class="pre">+</span> <span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">Y)</span></code>.</p>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<ol class="arabic simple">
+<li><p>it’s impossible to construct relations between sets, they’re always flattened</p></li>
+<li><p>this is the only way to construct relations outside of signatures</p></li>
+</ol>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="docutils literal notranslate"><span class="pre">univ</span> <span class="pre">-&gt;</span> <span class="pre">univ</span></code> is the set of all possible relations in your model.</p>
+</div>
+</div>
+</div>
+<div class="section" id="integers">
+<span id="id4"></span><h3>Integers<a class="headerlink" href="#integers" title="Permalink to this headline">¶</a></h3>
+<p>Alloy has limited support for integers. To enforce bounded models, the
+numerical range is finite. By default, Alloy uses models with 4-bit
+signed integers: all integers between <code class="docutils literal notranslate"><span class="pre">-8</span></code> and <code class="docutils literal notranslate"><span class="pre">7</span></code>. If an arithmetic
+operation would cause this to overflow, then the predicate is
+automatically declared false. In the <a class="reference internal" href="../tooling/visualizer.html#evaluator"><span class="std std-ref">Evaluator</span></a>, however, it will wrap the overflowed number.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The numerical range can be changed by placing a <a class="reference internal" href="commands.html#scopes"><span class="std std-ref">scope</span></a> on <code class="docutils literal notranslate"><span class="pre">Int</span></code>. The number of the scope is the number of bits in the signed integers. For example, if the scope is <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">Int</span></code>, the model will have all integers between <code class="docutils literal notranslate"><span class="pre">-16</span></code> and <code class="docutils literal notranslate"><span class="pre">15</span></code>.</p>
+</div>
+<p>All arithmetic operators are over the given model’s numeric range. To
+avoid conflict with set and relation operators, the arithmetic operators
+are written as <a class="reference internal" href="predicates-and-functions.html#functions"><span class="std std-ref">Functions</span></a>:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="n">add</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">]</span>
+<span class="n">sub</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">]</span>
+<span class="n">mul</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">]</span>
+<span class="n">div</span><span class="o">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="o">]</span> <span class="c1">-- integer divison, drop remainder</span>
+<span class="n">rem</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">]</span> <span class="c1">-- remainder</span>
+</pre></div>
+</div>
+<p>You can use receiver syntax for this, and write <code class="docutils literal notranslate"><span class="pre">add[1,</span> <span class="pre">2]</span></code> as
+<code class="docutils literal notranslate"><span class="pre">1.add[2]</span></code>. There are also the following comparison predicates:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">=&lt;</span> <span class="mi">2</span>
+<span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span>
+<span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">2</span>
+<span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+<span class="mi">1</span> <span class="o">!=</span> <span class="mi">2</span>
+<span class="mi">1</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>As there are no corresponding symbols for elements to overload, these
+operators are written as infixes.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Sets of integers have non-intuitive properties and should be used with care.</p>
+</div>
+<div class="section" id="id5">
+<span id="id6"></span><h4><code class="docutils literal notranslate"><span class="pre">#</span></code><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">#S</span></code> is the number of elements in <code class="docutils literal notranslate"><span class="pre">S</span></code>.</p>
+</div>
+<div class="advanced section" id="sets-of-numbers">
+<h4>Sets of numbers<a class="headerlink" href="#sets-of-numbers" title="Permalink to this headline">¶</a></h4>
+<p id="sum">For set operations, a set of numbers are treated as a set. For
+arithmetic operations, however, a set of numbers is first summed before
+applying the operator. This is equivalent to using the <code class="docutils literal notranslate"><span class="pre">sum[]</span></code>
+function.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="c1">-- true</span>
+<span class="o">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="c1">-- true</span>
+<span class="o">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">)</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1">-- false</span>
+<span class="o">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">).</span><span class="n">plus</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1">-- true</span>
+<span class="o">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">).</span><span class="n">plus</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">-- false</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="relations">
+<span id="id7"></span><h2>Relations<a class="headerlink" href="#relations" title="Permalink to this headline">¶</a></h2>
+<p>Given the following spec</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Group</span> <span class="o">{}</span>
+<span class="kd">sig</span> <span class="n">User</span> <span class="o">{</span>
+  <span class="n">belongs_to</span><span class="p">:</span> <span class="k">set</span> <span class="n">Group</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">belongs_to</span></code> describes a <strong>relation</strong> between <code class="docutils literal notranslate"><span class="pre">User</span></code> and <code class="docutils literal notranslate"><span class="pre">Group</span></code>.
+Each individual relation consists of a pair of atoms, the first being
+<code class="docutils literal notranslate"><span class="pre">User</span></code>, the second being <code class="docutils literal notranslate"><span class="pre">Group</span></code>. We write an individual relation
+with <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>. One possible model might have</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="n">belongs_to</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">U1</span> <span class="o">-&gt;</span> <span class="n">G1</span> <span class="o">+</span>
+  <span class="n">U2</span> <span class="o">-&gt;</span> <span class="n">G1</span> <span class="o">+</span>
+  <span class="n">U2</span> <span class="o">-&gt;</span> <span class="n">G2</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Relations do <em>not</em> need to be 1-1: here two users map to <code class="docutils literal notranslate"><span class="pre">G1</span></code> and one
+user maps to both <code class="docutils literal notranslate"><span class="pre">G1</span></code> and <code class="docutils literal notranslate"><span class="pre">G2</span></code>.</p>
+<blockquote>
+<div><div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">abstract</span> <span class="kd">sig</span> <span class="n">Group</span> <span class="o">{}</span>
+<span class="k">abstract</span> <span class="kd">sig</span> <span class="n">User</span> <span class="o">{</span>
+   <span class="n">belongs_to</span><span class="p">:</span> <span class="k">set</span> <span class="n">Group</span>
+<span class="o">}</span>
+
+<span class="k">one</span> <span class="kd">sig</span> <span class="n">U1</span><span class="p">,</span> <span class="n">U2</span> <span class="k">extends</span> <span class="n">User</span> <span class="o">{}</span>
+<span class="k">one</span> <span class="kd">sig</span> <span class="n">G1</span><span class="p">,</span> <span class="n">G2</span> <span class="k">extends</span> <span class="n">Group</span> <span class="o">{}</span>
+
+<span class="k">fact</span> <span class="o">{</span>
+  <span class="n">belongs_to</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">U1</span> <span class="o">-&gt;</span> <span class="n">G1</span> <span class="o">+</span>
+  <span class="n">U2</span> <span class="o">-&gt;</span> <span class="n">G1</span> <span class="o">+</span>
+  <span class="n">U2</span> <span class="o">-&gt;</span> <span class="n">G2</span>
+<span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<img alt="../_images/belongs_to.png" src="../_images/belongs_to.png" />
+<p>Relations in Alloy are first class objects, and can be manipulated and
+used in expressions. [This assumes you already know the set operations].
+For example, we can reverse a relation by adding <code class="docutils literal notranslate"><span class="pre">~</span></code> before it:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="o">~</span><span class="n">belongs_to</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">G1</span> <span class="o">-&gt;</span> <span class="n">U1</span> <span class="o">+</span>
+  <span class="n">G1</span> <span class="o">-&gt;</span> <span class="n">U2</span> <span class="o">+</span>
+  <span class="n">G2</span> <span class="o">-&gt;</span> <span class="n">U2</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="section" id="the-operator">
+<span id="id8"></span><h3>The . Operator<a class="headerlink" href="#the-operator" title="Permalink to this headline">¶</a></h3>
+<p>The dot (<code class="docutils literal notranslate"><span class="pre">.</span></code>) operator is the most common relationship operator, and has
+several different uses. The dot operator is left-binding: <code class="docutils literal notranslate"><span class="pre">a.b.c</span></code> is
+parsed as <code class="docutils literal notranslate"><span class="pre">(a.b).c</span></code>, not <code class="docutils literal notranslate"><span class="pre">a.(b.c)</span></code>.</p>
+<div class="section" id="set-rel">
+<h4><code class="docutils literal notranslate"><span class="pre">Set.rel</span></code><a class="headerlink" href="#set-rel" title="Permalink to this headline">¶</a></h4>
+<p>Return every element that elements in <code class="docutils literal notranslate"><span class="pre">Set</span></code> map to, via <code class="docutils literal notranslate"><span class="pre">rel</span></code>. This also works for individual atoms.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="n">U1</span><span class="o">.</span><span class="n">belongs_to</span> <span class="o">=</span> <span class="n">G1</span>
+<span class="o">(</span><span class="n">U1</span> <span class="o">+</span> <span class="n">U2</span><span class="o">).</span><span class="n">belongs_to</span> <span class="o">=</span> <span class="o">{</span><span class="n">G1</span><span class="p">,</span> <span class="n">G2</span><span class="o">}</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In this case, we can find all groups in the relation with <code class="docutils literal notranslate"><span class="pre">User.belongs_to</span></code>. However, some relations may mix different types of atoms. In that case <code class="docutils literal notranslate"><span class="pre">univ.~rel</span></code> is the domain of <code class="docutils literal notranslate"><span class="pre">rel</span></code> and <code class="docutils literal notranslate"><span class="pre">univ.rel</span></code> is the range of <code class="docutils literal notranslate"><span class="pre">rel</span></code>.</p>
+</div>
+<p>For <a class="reference internal" href="signatures.html#multirelations"><span class="std std-ref">Multirelations</span></a>, this will return the “tail” of the relation. Eg if <code class="docutils literal notranslate"><span class="pre">rel</span> <span class="pre">=</span> <span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span> <span class="pre">-&gt;</span> <span class="pre">C</span></code>, then <code class="docutils literal notranslate"><span class="pre">A.rel</span> <span class="pre">=</span> <span class="pre">B</span> <span class="pre">-&gt;</span> <span class="pre">C</span></code>.</p>
+</div>
+<div class="section" id="rel-set">
+<h4><code class="docutils literal notranslate"><span class="pre">rel.Set</span></code><a class="headerlink" href="#rel-set" title="Permalink to this headline">¶</a></h4>
+<p>Writing <code class="docutils literal notranslate"><span class="pre">rel.Set</span></code> is equivalent to writing <code class="docutils literal notranslate"><span class="pre">Set.~rel</span></code>. See <a class="reference internal" href="#id12"><span class="std std-ref">~rel</span></a>.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="n">belongs_to</span><span class="o">.</span><span class="n">G1</span> <span class="o">=</span> <span class="o">{</span><span class="n">U1</span><span class="p">,</span> <span class="n">U2</span><span class="o">}</span>
+<span class="n">G1</span><span class="o">.~</span><span class="n">belongs_to</span> <span class="o">=</span> <span class="o">{</span><span class="n">U1</span><span class="p">,</span> <span class="n">U2</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rel1-rel2">
+<h4><code class="docutils literal notranslate"><span class="pre">rel1.rel2</span></code><a class="headerlink" href="#rel1-rel2" title="Permalink to this headline">¶</a></h4>
+<p>We can use the dot operator with two relations. It returns the inner
+product of the two relations. For example,
+given</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="n">rel1</span> <span class="o">=</span> <span class="o">{</span><span class="n">A</span> <span class="o">-&gt;</span> <span class="n">B</span><span class="p">,</span>         <span class="n">B</span> <span class="o">-&gt;</span> <span class="n">A</span><span class="o">}</span>
+<span class="n">rel2</span> <span class="o">=</span> <span class="o">{</span><span class="n">B</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="p">,</span>
+        <span class="n">B</span> <span class="o">-&gt;</span> <span class="n">D</span><span class="p">,</span>         <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">E</span><span class="o">}</span>
+
+<span class="n">rel1</span><span class="o">.</span><span class="n">rel2</span> <span class="o">=</span> <span class="o">{</span>
+        <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="p">,</span>
+        <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">D</span><span class="p">,</span>         <span class="n">B</span> <span class="o">-&gt;</span> <span class="n">E</span><span class="o">}</span>
+</pre></div>
+</div>
+<p>In our case with Users and Groups, <code class="docutils literal notranslate"><span class="pre">belongs_to.~belongs_to</span></code> maps every
+User to every other user that shares a group.</p>
+</div>
+<div class="section" id="id9">
+<span id="id10"></span><h4>[]<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">rel[elem]</span></code> is equivalent to writing <code class="docutils literal notranslate"><span class="pre">elem.(rel)</span></code>. It has a lower
+precedence than the <code class="docutils literal notranslate"><span class="pre">.</span></code> operator, which makes it useful for
+<a class="reference internal" href="signatures.html#multirelations"><span class="std std-ref">Multirelations</span></a>. If we have</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Light</span> <span class="o">{</span>
+   <span class="n">state</span><span class="p">:</span> <span class="n">Color</span> <span class="o">-&gt;</span> <span class="n">Time</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Then <code class="docutils literal notranslate"><span class="pre">L.state[C]</span></code> would be all of the times <code class="docutils literal notranslate"><span class="pre">T</span></code> where the light <code class="docutils literal notranslate"><span class="pre">L</span></code> was color <code class="docutils literal notranslate"><span class="pre">C</span></code>. The equivalent without <code class="docutils literal notranslate"><span class="pre">[]</span></code> would be <code class="docutils literal notranslate"><span class="pre">C.(L.state)</span></code>.</p>
+</div>
+</div>
+<div class="section" id="iden">
+<span id="id11"></span><h3>iden<a class="headerlink" href="#iden" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">iden</span></code> is the relationship mapping every element to itself. If we have
+an element <code class="docutils literal notranslate"><span class="pre">a</span></code> in our model, then <code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">-&gt;</span> <span class="pre">a)</span> <span class="pre">in</span> <span class="pre">iden</span></code>.</p>
+<p>An example of iden’s usefulness: if we want to say that <code class="docutils literal notranslate"><span class="pre">rel</span></code> doesn’t
+have any cycles, we can say <code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">iden</span> <span class="pre">&amp;</span> <span class="pre">^rel</span></code>.</p>
+</div>
+<div class="section" id="additional-operators">
+<h3>Additional Operators<a class="headerlink" href="#additional-operators" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You cannot use <code class="docutils literal notranslate"><span class="pre">~</span></code>, <code class="docutils literal notranslate"><span class="pre">^</span></code>, or <code class="docutils literal notranslate"><span class="pre">*</span></code> with <a class="reference internal" href="signatures.html#multirelations"><span class="std std-ref">higher-arity relations</span></a>.</p>
+</div>
+<div class="section" id="rel">
+<span id="id12"></span><h4><code class="docutils literal notranslate"><span class="pre">~rel</span></code><a class="headerlink" href="#rel" title="Permalink to this headline">¶</a></h4>
+<p>As mentioned, <code class="docutils literal notranslate"><span class="pre">~rel</span></code> is the reverse of <code class="docutils literal notranslate"><span class="pre">rel</span></code>.</p>
+</div>
+<div class="section" id="and">
+<span id="transitive-closure"></span><h4><code class="docutils literal notranslate"><span class="pre">^</span></code> and <code class="docutils literal notranslate"><span class="pre">*</span></code><a class="headerlink" href="#and" title="Permalink to this headline">¶</a></h4>
+<p>These are the <strong>transitive closure</strong> relationships. Take the following
+example:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Node</span> <span class="o">{</span>
+  <span class="n">edge</span><span class="p">:</span> <span class="k">set</span> <span class="n">Node</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">N.edge</span></code> is the set of all nodes that <code class="docutils literal notranslate"><span class="pre">N</span></code> connects to.
+<code class="docutils literal notranslate"><span class="pre">N.edge.edge</span></code> is the set of all nodes that an edge of <code class="docutils literal notranslate"><span class="pre">N</span></code> connects
+to. <code class="docutils literal notranslate"><span class="pre">N.edge.edge.edge</span></code> is the set of all nodes that are an edge of an
+edge of N, ad infinitum. If we want every node that is connected to <code class="docutils literal notranslate"><span class="pre">N</span></code>,
+this is called the transitive closure and is written as <code class="docutils literal notranslate"><span class="pre">N.^edge</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">^</span></code> does <em>not</em> include the original atom unless it’s transitively
+reachable! In the above example, <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">in</span> <span class="pre">N.^edge</span></code> iff the graph has a
+cycle containing <code class="docutils literal notranslate"><span class="pre">N</span></code>. If we want to also include <code class="docutils literal notranslate"><span class="pre">N</span></code>, use
+<code class="docutils literal notranslate"><span class="pre">N.*edge</span></code> instead.</p>
+<p><code class="docutils literal notranslate"><span class="pre">^</span></code> operates on the relationship, so <code class="docutils literal notranslate"><span class="pre">^edge</span></code> is also itself a
+relationship and can be manipulated like any other. We can write both
+<code class="docutils literal notranslate"><span class="pre">~^edge</span></code> and <code class="docutils literal notranslate"><span class="pre">^~edge</span></code>. It also works on arbitrary relationships.
+<code class="docutils literal notranslate"><span class="pre">U1.^(belongs_to.~belongs_to)</span></code> is the set of people that share a group
+with <code class="docutils literal notranslate"><span class="pre">U1</span></code>, or share a group with people who share a group with <code class="docutils literal notranslate"><span class="pre">U1</span></code>,
+ad infinitum.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>By itself <code class="docutils literal notranslate"><span class="pre">*edge</span></code> will include <code class="docutils literal notranslate"><span class="pre">iden</span></code>! <code class="docutils literal notranslate"><span class="pre">*edge</span> <span class="pre">=</span> <span class="pre">^edge</span> <span class="pre">+</span> <span class="pre">iden</span></code>. For best results only use <code class="docutils literal notranslate"><span class="pre">*</span></code> immediately before joining the closure with another set.</p>
+</div>
+</div>
+</div>
+<div class="advanced section" id="advanced-operators">
+<h3>Advanced Operators<a class="headerlink" href="#advanced-operators" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="relation-restriction">
+<span id="id13"></span><h4><code class="docutils literal notranslate"><span class="pre">&lt;:</span></code> and <code class="docutils literal notranslate"><span class="pre">:&gt;</span></code><a class="headerlink" href="#relation-restriction" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;:</span></code> is <em>domain restriction</em>. <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">&lt;:</span> <span class="pre">rel</span></code> is all of the elements in
+<code class="docutils literal notranslate"><span class="pre">rel</span></code> that <strong>start</strong> with an element in <code class="docutils literal notranslate"><span class="pre">Set</span></code>. <code class="docutils literal notranslate"><span class="pre">:&gt;</span></code> is the <em>range
+restriction</em>, and works similarly: <code class="docutils literal notranslate"><span class="pre">rel</span> <span class="pre">:&gt;</span> <span class="pre">Set</span></code> is all the elements of
+<code class="docutils literal notranslate"><span class="pre">rel</span></code> that <strong>end</strong> with an element in Set.</p>
+<p>This is mostly useful for directly manipulating relations. For example,
+given a set S, we can map every element to itself by doing
+<code class="docutils literal notranslate"><span class="pre">S</span> <span class="pre">&lt;:</span> <span class="pre">iden</span></code>.</p>
+</div>
+<div class="section" id="id14">
+<span id="id15"></span><h4><code class="docutils literal notranslate"><span class="pre">++</span></code><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">rel1</span> <span class="pre">++</span> <span class="pre">rel2</span></code> is the union of the two relations, with one exception: if any relations in <code class="docutils literal notranslate"><span class="pre">rel1</span></code> that share a “key” with a relation in <code class="docutils literal notranslate"><span class="pre">rel2</span></code> are dropped.  Think of it like merging two dictionaries.</p>
+<p>Formally speaking, we have</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="n">rel1</span> <span class="o">++</span> <span class="n">rel2</span> <span class="o">=</span> <span class="n">rel1</span> <span class="o">-</span> <span class="o">(</span><span class="n">rel2</span><span class="o">.</span><span class="kc">univ</span> <span class="o">&lt;</span><span class="p">:</span> <span class="n">rel1</span><span class="o">)</span> <span class="o">+</span> <span class="n">rel2</span>
+</pre></div>
+</div>
+<p>Some examples of <code class="docutils literal notranslate"><span class="pre">++</span></code>:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="n">A</span> <span class="o">-&gt;</span> <span class="n">B</span> <span class="o">+</span> <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="o">)</span> <span class="o">++</span> <span class="o">(</span><span class="n">A</span> <span class="o">-&gt;</span> <span class="n">A</span><span class="o">)</span> <span class="o">=</span> <span class="o">(</span><span class="n">A</span> <span class="o">-&gt;</span> <span class="n">A</span><span class="o">)</span>
+<span class="o">(</span><span class="n">A</span> <span class="o">-&gt;</span> <span class="n">B</span> <span class="o">+</span> <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="o">)</span> <span class="o">++</span> <span class="o">(</span><span class="n">A</span> <span class="o">-&gt;</span> <span class="n">A</span> <span class="o">+</span> <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="o">)</span> <span class="o">=</span> <span class="o">(</span><span class="n">A</span> <span class="o">-&gt;</span> <span class="n">A</span> <span class="o">+</span> <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="o">)</span>
+<span class="o">(</span><span class="n">A</span> <span class="o">-&gt;</span> <span class="n">B</span> <span class="o">+</span> <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="o">)</span> <span class="o">++</span> <span class="o">(</span><span class="n">C</span> <span class="o">-&gt;</span> <span class="n">A</span><span class="o">)</span> <span class="o">=</span> <span class="o">(</span><span class="n">A</span> <span class="o">-&gt;</span> <span class="n">B</span> <span class="o">+</span> <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">C</span> <span class="o">+</span> <span class="n">C</span> <span class="o">-&gt;</span> <span class="n">A</span><span class="o">)</span>
+<span class="o">(</span><span class="n">A</span> <span class="o">-&gt;</span> <span class="n">B</span> <span class="o">+</span> <span class="n">B</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="o">)</span> <span class="o">++</span> <span class="o">(</span><span class="n">A</span> <span class="o">-&gt;</span> <span class="n">A</span><span class="o">)</span> <span class="o">=</span> <span class="o">(</span><span class="n">A</span> <span class="o">-&gt;</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>It’s mostly useful for modeling <a class="reference internal" href="../techniques/dynamics.html#dynamics"><span class="std std-ref">Time</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using multirelations the two relations need the same arity, and it overrides based on only the first element in the relations.</p>
+</div>
+</div>
+<div class="advanced section" id="set-comprehensions">
+<span id="id16"></span><h4>Set Comprehensions<a class="headerlink" href="#set-comprehensions" title="Permalink to this headline">¶</a></h4>
+<p>Set comprehensions are written as</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="o">{</span><span class="n">x</span><span class="p">:</span> <span class="n">Set1</span> <span class="o">|</span> <span class="n">expr</span><span class="o">[</span><span class="n">x</span><span class="o">]}</span>
+</pre></div>
+</div>
+<p>The expression evaluates to the set of all elements of <code class="docutils literal notranslate"><span class="pre">Set1</span></code> where <code class="docutils literal notranslate"><span class="pre">expr[x]</span></code> is true. <code class="docutils literal notranslate"><span class="pre">expr</span></code> can be any expression and may be inline. Set comprehensions can be used anywhere a set or set expression is valid.</p>
+<p>Set comprehensions can use multiple inputs.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="o">{</span><span class="n">x</span><span class="p">:</span> <span class="n">Set1</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Set2</span><span class="p">,</span> <span class="o">...</span> <span class="o">|</span> <span class="n">expr</span><span class="o">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">]}</span>
+</pre></div>
+</div>
+<p>In this case this comprehension will return relations in <code class="docutils literal notranslate"><span class="pre">Set1</span> <span class="pre">-&gt;</span> <span class="pre">Set2</span></code>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="expressions-and-constraints.html" class="btn btn-neutral float-right" title="Expressions and Constraints" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="signatures.html" class="btn btn-neutral float-left" title="Signatures" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Modules &mdash; Alloy Documentation  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tooling" href="../tooling/index.html" />
+    <link rel="prev" title="Commands" href="commands.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Alloy Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Language</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="signatures.html">Signatures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sets-and-relations.html">Sets and Relations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions-and-constraints.html">Expressions and Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicates-and-functions.html">Predicates and Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">Commands</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-modules">Simple Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#namespaces">Namespaces</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#parameterized-modules">Parameterized Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-modules">Creating Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#private">Private</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-parameterized-modules">Creating Parameterized Modules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tooling/index.html">Tooling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../techniques/index.html">Techniques</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Alloy Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Language</a> &raquo;</li>
+        
+      <li>Modules</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/language/modules.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="modules">
+<span id="id1"></span><h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
+<p>Alloy <strong>modules</strong> are similar to programming languages and act as the namespaces. Alloy comes with a standard library of <a class="reference internal" href="../modules/index.html#utils"><span class="std std-ref">utility modules</span></a>.</p>
+<div class="section" id="simple-modules">
+<span id="id2"></span><h2>Simple Modules<a class="headerlink" href="#simple-modules" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">util</span><span class="o">/</span><span class="n">relation</span> <span class="k">as</span> <span class="n">r</span>
+</pre></div>
+</div>
+<p>Imports must be at the top of the file. Modules may import new signatures into the spec.</p>
+<p>Modules can be imported multiple times under different namespaces.</p>
+<div class="section" id="namespaces">
+<span id="id3"></span><h3>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this headline">¶</a></h3>
+<p>A module can be namespaced by importing <code class="docutils literal notranslate"><span class="pre">as</span></code> a name. Namespaces are accessed with <code class="docutils literal notranslate"><span class="pre">/</span></code>. This is also called a <strong>qualified</strong> import.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">util</span><span class="o">/</span><span class="n">relation</span> <span class="k">as</span> <span class="n">r</span>
+
+<span class="c1">-- later</span>
+
+<span class="n">r</span><span class="o">/</span><span class="n">dom</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="parameterized-modules">
+<span id="id4"></span><h2>Parameterized Modules<a class="headerlink" href="#parameterized-modules" title="Permalink to this headline">¶</a></h2>
+<p>A parameterized module is “generic”: its functions and predicates are defined for some arbitrary signature. When you import a parameterized module, you must pass in a signature. Its functions and predicates are then specialized to be defined for that signature.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">util</span><span class="o">/</span><span class="n">ordering</span><span class="o">[</span><span class="n">A</span><span class="o">]</span>
+
+<span class="kd">sig</span> <span class="n">A</span> <span class="o">{}</span>
+
+<span class="k">run</span> <span class="o">{</span><span class="k">some</span> <span class="n">first</span><span class="o">}</span> <span class="c1">-- returns an A atom</span>
+</pre></div>
+</div>
+<p>Normally <a class="reference internal" href="../modules/ordering.html#first" title="first"><code class="xref any als als-func docutils literal notranslate"><span class="pre">ord/first</span></code></a> returns an abstract <code class="docutils literal notranslate"><span class="pre">elem</span></code>. By parameterizing the module with <code class="docutils literal notranslate"><span class="pre">A</span></code>, the function now returns an <code class="docutils literal notranslate"><span class="pre">A</span></code> atom.</p>
+<p>The input must be a full signature and not a subset of one.</p>
+<p>A parameterized module can be imported multiple times using <a class="reference internal" href="#namespaces"><span class="std std-ref">Namespaces</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following built-in modules are parameterized: <a class="reference internal" href="../modules/ordering.html#module-ordering" title="ordering"><code class="xref any py py-mod docutils literal notranslate"><span class="pre">ordering</span></code></a>, <a class="reference internal" href="../modules/time.html#module-time" title="time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">time</span></code></a>, <a class="reference internal" href="../modules/graph.html#module-graph" title="graph"><code class="xref any py py-mod docutils literal notranslate"><span class="pre">graph</span></code></a>, and <code class="xref any docutils literal notranslate"><span class="pre">sequence</span></code>.</p>
+</div>
+</div>
+<div class="section" id="creating-modules">
+<h2>Creating Modules<a class="headerlink" href="#creating-modules" title="Permalink to this headline">¶</a></h2>
+<p>The syntax for a module is</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kn">module</span> <span class="n">name</span>
+</pre></div>
+</div>
+<p>At the beginning of the file.</p>
+<div class="section" id="private">
+<span id="id5"></span><h3>Private<a class="headerlink" href="#private" title="Permalink to this headline">¶</a></h3>
+<p>Any module predicate, function, and signature can be preceded by <code class="docutils literal notranslate"><span class="pre">private</span></code>, which means it will not be imported into other modules.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kn">module</span> <span class="n">name</span>
+
+<span class="n">private</span> <span class="kd">sig</span> <span class="n">A</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="id6">
+<p class="admonition-title">Todo</p>
+<p>exactly in module names. Not MVP, but should probably be brought up briefly</p>
+</div>
+</div>
+<div class="section" id="creating-parameterized-modules">
+<h3>Creating Parameterized Modules<a class="headerlink" href="#creating-parameterized-modules" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kn">module</span> <span class="n">name</span><span class="o">[</span><span class="n">sig</span><span class="o">]</span>
+
+<span class="c1">-- predicates and functions should use sig</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../tooling/index.html" class="btn btn-neutral float-right" title="Tooling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="commands.html" class="btn btn-neutral float-left" title="Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

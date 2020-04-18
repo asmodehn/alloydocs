@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>graph &mdash; Alloy Documentation  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ordering" href="ordering.html" />
+    <link rel="prev" title="boolean" href="boolean.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Alloy Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tooling/index.html">Tooling</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="boolean.html">boolean</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">graph</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#predicates">Predicates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ordering.html">ordering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relation.html">relation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ternary.html">ternary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../techniques/index.html">Techniques</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Alloy Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Modules</a> &raquo;</li>
+        
+      <li>graph</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/graph.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-graph"></span><div class="section" id="graph">
+<h1>graph<a class="headerlink" href="#graph" title="Permalink to this headline">¶</a></h1>
+<p>Graph provides predicates on relations over a parameterized signature.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">util</span><span class="o">/</span><span class="n">graph</span><span class="o">[</span><span class="n">Node</span><span class="o">]</span>
+
+<span class="kd">sig</span> <span class="n">Node</span> <span class="o">{</span>
+  <span class="n">edge</span><span class="p">:</span> <span class="k">set</span> <span class="n">Node</span>
+<span class="o">}</span>
+
+<span class="k">run</span> <span class="o">{</span>
+  <span class="n">dag</span><span class="o">[</span><span class="n">edge</span><span class="o">]</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Notice that graph is parameterized on the <strong>signature</strong>, but the predicate takes in a <strong>relation</strong>. This is so that you can apply multiple predicates to multiple different relations, or different subsets of the same relation. The graph module uses some specific terminology:</p>
+<p>This means that in a completely unconnected graph, every node is both a root and a leaf.</p>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="als function">
+<dt id="roots">
+<em class="property">fun </em><code class="sig-name descname">roots[r: node-&gt; node]</code><a class="headerlink" href="#roots" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">Node</span></code></p>
+</dd>
+</dl>
+<p>Returns the set of nodes that <em>are not connected to</em> by any other node.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this is <em>not</em> the same meaning of <em>root</em> as in the <a class="reference internal" href="#rootedAt" title="rootedAt"><code class="xref any als als-pred docutils literal notranslate"><span class="pre">rootedAt</span></code></a> predicate! For the predicate, a <em>root</em> is a node that transitively covers the whole graph. Interally, <code class="docutils literal notranslate"><span class="pre">util/graph</span></code> uses <code class="docutils literal notranslate"><span class="pre">rootedAt</span></code> and not <code class="docutils literal notranslate"><span class="pre">roots</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="als function">
+<dt id="leaves">
+<em class="property">fun </em><code class="sig-name descname">leaves[r: node-&gt; node]</code><a class="headerlink" href="#leaves" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">Node</span></code></p>
+</dd>
+</dl>
+<p>Returns the set of nodes that <em>do not connect to</em> any other node.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">r</span></code> is empty, <code class="docutils literal notranslate"><span class="pre">roots[r]</span> <span class="pre">=</span> <span class="pre">leaves[r]</span> <span class="pre">=</span> <span class="pre">Node</span></code>. If <code class="docutils literal notranslate"><span class="pre">r</span></code> is undirected or contains enough self loops, <code class="docutils literal notranslate"><span class="pre">roots[r]</span> <span class="pre">=</span> <span class="pre">leaves[r]</span> <span class="pre">=</span></code>  <code class="xref any docutils literal notranslate"><span class="pre">none</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="als function">
+<dt id="innerNodes">
+<em class="property">fun </em><code class="sig-name descname">innerNodes[r: node-&gt; node]</code><a class="headerlink" href="#innerNodes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>All nodes that aren’t leaves</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">Node</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="predicates">
+<h2>Predicates<a class="headerlink" href="#predicates" title="Permalink to this headline">¶</a></h2>
+<dl class="als predicate">
+<dt id="undirected ">
+<em class="property">pred </em><code class="sig-name descname">undirected [r: node-&gt;node]</code><a class="headerlink" href="#undirected " title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">r</span></code> is <a class="reference internal" href="relation.html#symmetric" title="symmetric"><code class="xref als als-pred docutils literal notranslate"><span class="pre">symmetric</span></code></a>.</p>
+</dd></dl>
+
+<dl class="als predicate">
+<dt id="noSelfLoops">
+<em class="property">pred </em><code class="sig-name descname">noSelfLoops[r: node-&gt;node]</code><a class="headerlink" href="#noSelfLoops" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">r</span></code> is <a class="reference internal" href="relation.html#irreflexive" title="irreflexive"><code class="xref als als-pred docutils literal notranslate"><span class="pre">irreflexive</span></code></a>.</p>
+</dd></dl>
+
+<dl class="als predicate">
+<dt id="weaklyConnected">
+<em class="property">pred </em><code class="sig-name descname">weaklyConnected[r: node-&gt;node]</code><a class="headerlink" href="#weaklyConnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>For any two nodes A and B, there is a path from A to B or a path from B to A. The path may not necessarily be bidirectional.</p>
+</dd></dl>
+
+<dl class="als predicate">
+<dt id="stronglyConnected">
+<em class="property">pred </em><code class="sig-name descname">stronglyConnected[r: node-&gt;node]</code><a class="headerlink" href="#stronglyConnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>For any two nodes A and B, there is a path from A to B <em>and</em> a path from B to A.</p>
+</dd></dl>
+
+<dl class="als predicate">
+<dt id="rootedAt">
+<em class="property">pred </em><code class="sig-name descname">rootedAt[r: node-&gt;node, root: node]</code><a class="headerlink" href="#rootedAt" title="Permalink to this definition">¶</a></dt>
+<dd><p>All nodes are reachable from <code class="docutils literal notranslate"><span class="pre">root</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this is <em>not</em> the same meaning of <em>root</em> as in the <a class="reference internal" href="#roots" title="roots"><code class="xref any als als-func docutils literal notranslate"><span class="pre">roots</span></code></a> function! For the function, a <em>root</em> is a node no node connects to. Interally, <code class="docutils literal notranslate"><span class="pre">util/graph</span></code> uses <code class="docutils literal notranslate"><span class="pre">rootedAt</span></code> and not <code class="docutils literal notranslate"><span class="pre">roots</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="als predicate">
+<dt id="ring ">
+<em class="property">pred </em><code class="sig-name descname">ring [r: node-&gt;node]</code><a class="headerlink" href="#ring " title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">r</span></code> forms a single cycle.</p>
+</dd></dl>
+
+<dl class="als predicate">
+<dt id="dag ">
+<em class="property">pred </em><code class="sig-name descname">dag [r: node-&gt;node]</code><a class="headerlink" href="#dag " title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">r</span></code> is a <abbr title="directed acyclic graph">dag</abbr>: there are no self-loops in the transitive closure.</p>
+</dd></dl>
+
+<dl class="als predicate">
+<dt id="forest ">
+<em class="property">pred </em><code class="sig-name descname">forest [r: node-&gt;node]</code><a class="headerlink" href="#forest " title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">r</span></code> is a dag and every node has at most one parent.</p>
+</dd></dl>
+
+<dl class="als predicate">
+<dt id="tree ">
+<em class="property">pred </em><code class="sig-name descname">tree [r: node-&gt;node]</code><a class="headerlink" href="#tree " title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">r</span></code> is a forest with a single root node.</p>
+</dd></dl>
+
+<dl class="als predicate">
+<dt id="treeRootedAt">
+<em class="property">pred </em><code class="sig-name descname">treeRootedAt[r: node-&gt;node, root: node]</code><a class="headerlink" href="#treeRootedAt" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">r</span></code> is a tree with node <code class="docutils literal notranslate"><span class="pre">root</span></code>.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ordering.html" class="btn btn-neutral float-right" title="ordering" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="boolean.html" class="btn btn-neutral float-left" title="boolean" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Predicates and Functions &mdash; Alloy Documentation  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Commands" href="commands.html" />
+    <link rel="prev" title="Expressions and Constraints" href="expressions-and-constraints.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Alloy Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Language</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="signatures.html">Signatures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sets-and-relations.html">Sets and Relations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions-and-constraints.html">Expressions and Constraints</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Predicates and Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#predicates">Predicates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overloading">Overloading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-overrides">Parameter Overrides</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#facts">Facts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#implicit-facts">Implicit Facts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#macros">Macros</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tooling/index.html">Tooling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../techniques/index.html">Techniques</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Alloy Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Language</a> &raquo;</li>
+        
+      <li>Predicates and Functions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/language/predicates-and-functions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="predicates-and-functions">
+<h1>Predicates and Functions<a class="headerlink" href="#predicates-and-functions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="predicates">
+<span id="id1"></span><h2>Predicates<a class="headerlink" href="#predicates" title="Permalink to this headline">¶</a></h2>
+<p>A predicate is like a programming function that returns a
+<a class="reference internal" href="expressions-and-constraints.html#constraints"><span class="std std-ref">boolean</span></a>. While they are a special case of Alloy
+functions, they are more fundamental to modeling and addressed first.</p>
+<p>Predicates take the form</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">pred</span> <span class="n">name</span> <span class="o">{</span>
+       <span class="n">constraint</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Once defined, predicates can be used as part of boolean expressions. The
+following is a valid spec:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">A</span> <span class="o">{}</span>
+
+<span class="k">pred</span> <span class="n">at_least_one_a</span> <span class="o">{</span>
+  <span class="k">some</span> <span class="n">A</span>
+<span class="o">}</span>
+
+<span class="k">pred</span> <span class="n">more_than_one_a</span> <span class="o">{</span>
+  <span class="n">at_least_one_a</span> <span class="ow">and</span> <span class="n">not</span> <span class="k">one</span> <span class="n">A</span>
+<span class="o">}</span>
+
+<span class="k">run</span> <span class="n">more_than_one_a</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Predicates and functions <strong>cannot</strong>, in the general case, be recursive.
+Limited recursion is possible, see
+<a class="reference internal" href="../tooling/analyzer.html#recursion"><span class="std std-ref">here</span></a> for more info.</p>
+</div>
+<div class="section" id="parameters">
+<span id="id2"></span><h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<p>Predicates can also take arguments.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">pred</span> <span class="n">foo</span><span class="o">[</span><span class="n">a</span><span class="p">:</span> <span class="n">Set1</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Set2</span><span class="o">...]</span> <span class="o">{</span>
+  <span class="n">expr</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>The predicate is called with <code class="docutils literal notranslate"><span class="pre">foo[x,</span> <span class="pre">y]</span></code>, <strong>using brackets, not
+parens</strong>. In the body of the predicate, <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> would have the
+corresponding values.</p>
+<div class="section" id="receiver-syntax">
+<span id="id3"></span><h4>Receiver Syntax<a class="headerlink" href="#receiver-syntax" title="Permalink to this headline">¶</a></h4>
+<p>The initial argument to a predicate can be passed in via a <code class="docutils literal notranslate"><span class="pre">.</span></code> join.
+The following two are equivalent:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="n">pred</span><span class="o">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">]</span>
+<span class="n">x</span><span class="o">.</span><span class="n">pred</span><span class="o">[</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="functions">
+<span id="id4"></span><h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>Alloy functions are equivalent to programming functions. They have the
+same structure as predicates, but also return a value:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="n">name</span><span class="o">[</span><span class="n">a</span><span class="p">:</span> <span class="n">Set1</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Set2</span><span class="o">]</span><span class="p">:</span> <span class="n">output_type</span> <span class="o">{</span>
+  <span class="n">expression</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>if a function is constant (does not take any parameters), the
+analyzer casts it to a constant set. This means if we have a function of parameter</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="n">foo</span><span class="p">:</span> <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">B</span> <span class="o">{</span>
+    <span class="n">expression</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Then <code class="docutils literal notranslate"><span class="pre">^foo</span></code> is a valid expression.</p>
+</div>
+<div class="advanced section" id="overloading">
+<span id="id5"></span><h3>Overloading<a class="headerlink" href="#overloading" title="Permalink to this headline">¶</a></h3>
+<p>Predicates and functions may be overloaded, as long as it’s unambiguous which function applies. The following is valid:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">A</span> <span class="o">{}</span>
+
+<span class="kd">sig</span> <span class="n">B</span> <span class="o">{}</span>
+
+<span class="k">pred</span> <span class="n">foo</span><span class="o">[</span><span class="n">a</span><span class="p">:</span> <span class="n">A</span><span class="o">]</span> <span class="o">{</span> <span class="c1">--1</span>
+  <span class="n">a</span> <span class="ow">in</span> <span class="n">A</span>
+<span class="o">}</span>
+
+<span class="k">pred</span> <span class="n">foo</span><span class="o">[</span><span class="n">b</span><span class="p">:</span> <span class="n">B</span><span class="o">]</span> <span class="o">{</span> <span class="c1">--2</span>
+  <span class="n">b</span> <span class="ow">in</span> <span class="n">B</span>
+<span class="o">}</span>
+
+<span class="k">run</span> <span class="o">{</span><span class="k">some</span> <span class="n">a</span><span class="p">:</span> <span class="n">A</span> <span class="o">|</span> <span class="n">foo</span><span class="o">[</span><span class="n">a</span><span class="o">]}</span>
+</pre></div>
+</div>
+<p>As when <code class="docutils literal notranslate"><span class="pre">foo</span></code> is called, it’s unambiguous whether it means (1) or (2). If we instead replaced <code class="docutils literal notranslate"><span class="pre">sig</span> <span class="pre">B</span></code> with <code class="docutils literal notranslate"><span class="pre">sig</span> <span class="pre">B</span> <span class="pre">extends</span> <span class="pre">A</span></code>, then it’s ambiguous and the call is invalid.</p>
+<p>Overloading can happen if you import the same parameterized module twice.For example, given the following:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">util</span><span class="o">/</span><span class="n">ordering</span><span class="o">[</span><span class="n">A</span><span class="o">]</span>
+<span class="kn">open</span> <span class="n">util</span><span class="o">/</span><span class="n">ordering</span><span class="o">[</span><span class="n">B</span><span class="o">]</span>
+
+<span class="kd">sig</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">{}</span>
+<span class="k">run</span> <span class="o">{</span><span class="k">some</span> <span class="n">first</span><span class="o">}</span>
+</pre></div>
+</div>
+<p>It is unclear whether <code class="docutils literal notranslate"><span class="pre">first</span></code> applies to <code class="docutils literal notranslate"><span class="pre">A</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code>. To fix this, use <a class="reference internal" href="modules.html#namespaces"><span class="std std-ref">Namespaced imports</span></a>:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kn">open</span> <span class="n">util</span><span class="o">/</span><span class="n">ordering</span><span class="o">[</span><span class="n">A</span><span class="o">]</span> <span class="k">as</span> <span class="n">u1</span>
+<span class="kn">open</span> <span class="n">util</span><span class="o">/</span><span class="n">ordering</span><span class="o">[</span><span class="n">B</span><span class="o">]</span> <span class="k">as</span> <span class="n">u2</span>
+
+<span class="kd">sig</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">{}</span>
+<span class="k">run</span> <span class="o">{</span><span class="k">some</span> <span class="n">u2</span><span class="o">/</span><span class="n">first</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="advanced section" id="parameter-overrides">
+<span id="id6"></span><h3>Parameter Overrides<a class="headerlink" href="#parameter-overrides" title="Permalink to this headline">¶</a></h3>
+<p>The parameters of a function (or predicate) can shadow a global value.
+In this case, you can retrieve the original global value by using
+<code class="docutils literal notranslate"><span class="pre">&#64;val</span></code>.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span>sig A {}
+
+pred f[A: univ, b: univ] {
+  b in A  -- function param
+  b in @A -- global signature
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="facts">
+<span id="id7"></span><h2>Facts<a class="headerlink" href="#facts" title="Permalink to this headline">¶</a></h2>
+<p>A fact has the same form as a global predicate:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">fact</span> <span class="n">name</span> <span class="o">{</span>
+  <span class="n">constraint</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>A fact is <em>always</em> considered true by the Analyzer. Any models that
+would violate the fact are discarded instead of checked. This means that
+if a potential model both violates an assertion and a fact, it is not
+considered a counterexample.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">A</span> <span class="o">{}</span>
+
+<span class="c1">-- This has a counterexample</span>
+<span class="k">check</span> <span class="o">{</span><span class="k">no</span> <span class="n">A</span><span class="o">}</span>
+
+<span class="c1">-- Unless we add this fact</span>
+<span class="k">fact</span> <span class="o">{</span><span class="k">no</span> <span class="n">A</span><span class="o">}</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For facts, the name is optional. In addition, the name can be a string. So this is a valid fact:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span>fact &quot;no cycles&quot; {
+  all n: Node | n not in n.^edge
+}
+</pre></div>
+</div>
+</div>
+<div class="advanced section" id="implicit-facts">
+<span id="id8"></span><h3>Implicit Facts<a class="headerlink" href="#implicit-facts" title="Permalink to this headline">¶</a></h3>
+<p>You can write a fact as part of a signature. The implicit fact goes
+after the signature definition and relations. Inside of an implicit fact,
+you can get the current atom with <code class="docutils literal notranslate"><span class="pre">this</span></code>. Fields are automatically expanded in the implicit fact to <code class="docutils literal notranslate"><span class="pre">this.field</span></code>.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="kd">sig</span> <span class="n">Node</span> <span class="o">{</span>
+  <span class="n">edge</span><span class="p">:</span> <span class="k">set</span> <span class="n">Node</span>
+<span class="o">}</span> <span class="o">{</span>
+  <span class="k">this</span> <span class="n">not</span> <span class="ow">in</span> <span class="n">edge</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>This means you cannot apply the relation to another atom
+of the same signature inside the implicit fact. You can access the
+original relation by using the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator:</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span>-- undirected graphs only
+sig Node {
+  , edge: set Node
+}
+{
+  all link: edge | this in link.edge -- invalid
+  all link: edge | this in link.@edge -- valid
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="advanced section" id="macros">
+<span id="id9"></span><h2>Macros<a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+<p>A macro is a similar to a predicate or function, except it is expanded before runtime. For this reason, macros can be used as part of signature fields. Parameters to macros also don’t need to be given types, so can accept arbitrary signatures and even boolean constraints. Macros are defined with <code class="docutils literal notranslate"><span class="pre">let</span></code> in the top scope.</p>
+<div class="highlight-alloy notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">selfrel</span><span class="o">[</span><span class="n">Sig</span><span class="o">]</span> <span class="o">=</span> <span class="o">{</span> <span class="n">Sig</span> <span class="o">-&gt;</span> <span class="n">Sig</span> <span class="o">}</span>
+<span class="k">let</span> <span class="n">many</span><span class="o">[</span><span class="n">Sig</span><span class="o">]</span> <span class="o">=</span> <span class="o">{</span> <span class="k">some</span> <span class="n">Sig</span> <span class="ow">and</span> <span class="n">not</span> <span class="k">one</span> <span class="n">Sig</span> <span class="o">}</span>
+
+<span class="kd">sig</span> <span class="n">A</span> <span class="o">{</span>
+  <span class="n">rel</span><span class="p">:</span> <span class="n">selfrel</span><span class="o">[</span><span class="n">A</span><span class="o">]</span>
+<span class="o">}</span>
+
+<span class="k">run</span> <span class="o">{</span><span class="n">many</span><span class="o">[</span><span class="n">A</span><span class="o">]}</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="http://alloytools.org/quickguide/macro.html">here</a> for more information.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="commands.html" class="btn btn-neutral float-right" title="Commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="expressions-and-constraints.html" class="btn btn-neutral float-left" title="Expressions and Constraints" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
