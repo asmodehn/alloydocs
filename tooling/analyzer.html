@@ -172,15 +172,7 @@
 <p>The <strong>Alloy Analyzer</strong> is the tool that actually checks your spec.</p>
 <div class="section" id="configuring-the-analyzer">
 <h2>Configuring the Analyzer<a class="headerlink" href="#configuring-the-analyzer" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="id2">
-<p class="admonition-title">Todo</p>
-<p>make a link to SAT, explain what Kodkod is</p>
-</div>
 <p>The analyzer converts the model into a SAT expression to solve. Some of the options are configurable. By default you should not need to change any of these- most performance issues are better solved by improving the spec itself. The following all affect the runtime of the analyzer. All of these are under the “Options” toolbar of the IDE:</p>
-<div class="admonition-todo admonition" id="id3">
-<p class="admonition-title">Todo</p>
-<p>maximum stack</p>
-</div>
 <ul class="simple">
 <li><p><strong>Allow Warnings:</strong> When “no”, the analyzer will halt if the model has any warnings. Warnings usually, but not always, correspond to errors in the spec.</p></li>
 <li><p><strong>Maximum Memory:</strong> How much RAM the analyzer is allowed to use when solving.</p></li>
@@ -193,24 +185,6 @@
 <ul class="simple">
 <li><p><strong>Prevent Overflows:</strong> If an <a class="reference internal" href="../language/sets-and-relations.html#integers"><span class="std std-ref">arithmetic operation</span></a> would overflow the model, the predicate is treated as false.</p></li>
 </ul>
-<div class="admonition-todo admonition" id="id4">
-<p class="admonition-title">Todo</p>
-<ol class="arabic">
-<li><p>figure out who knows Skolem Depth. From <a class="reference external" href="http://alloytools.org/quickguide/gui.html">here</a>:</p>
-<blockquote>
-<div><p>&gt; Skolem Depth: This controls the maximum depth of alternating
-universal-vs-existential quantifier that we will permit when
-generating a skolem function. If a formula exceeds this depth, we
-will not generate a skolem function for it.</p>
-</div></blockquote>
-<p>but that doesn’t explain it in a way that’s useful for most readers</p>
-</li>
-<li><p>Figure out who knows what “Infer partial instances”. does.</p></li>
-</ol>
-<blockquote>
-<div><p>[We might just leave it out of this version]</p>
-</div></blockquote>
-</div>
 <div class="advanced section" id="recursion-depth">
 <span id="recursion"></span><h3>Recursion Depth<a class="headerlink" href="#recursion-depth" title="Permalink to this headline">¶</a></h3>
 <p>Predicates and functions are normally not recursive- they may not call
